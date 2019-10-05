@@ -14,5 +14,7 @@ PSColozier can use either standard console colors or RGB.
 
 ## Comands
 Get-ColorizerTheme
+
 Set-ColorizerTheme
+
 Get-ColorizerThemes
