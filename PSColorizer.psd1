@@ -30,7 +30,7 @@ CompanyName = 'Unknown'
 Copyright = '(c) Eddie de Bear. All rights reserved.'
 
 # Description of the functionality provided by this module
-# Description = ''
+Description = 'Brings color to the default powershell.'
 
 # Minimum version of the PowerShell engine required by this module
 # PowerShellVersion = ''
@@ -84,7 +84,7 @@ AliasesToExport = @()
 # DscResourcesToExport = @()
 
 # List of all modules packaged with this module
-# ModuleList = @()
+#ModuleList = @(PSColorizer)
 
 # List of all files packaged with this module
 # FileList = @()
@@ -95,13 +95,13 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        # Tags = @()
+        Tags = @('Color')
 
         # A URL to the license for this module.
-        # LicenseUri = ''
+        LicenseUri = 'https://github.com/JustABearOz/PSColorizer/blob/master/LICENSE'
 
         # A URL to the main website for this project.
-        # ProjectUri = ''
+        ProjectUri = 'https://github.com/JustABearOz/PSColorizer'
 
         # A URL to an icon representing this module.
         # IconUri = ''
