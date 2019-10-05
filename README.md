@@ -27,3 +27,6 @@ There are currently 2 themes that come with PSColorizer
 |Get-ColorizerTheme|Gets the current theme being used by PSColorizer|
 |Set-ColorizerTheme|Sets the current theme for colorizer to use|
 |Get-ColorizerThemes|Gets a list of all installed colorizer themes|
+
+## Installation
+_instructions coming soon, I'm working on having PSColorizer submitted to Powershell Gallary for easy installation_
