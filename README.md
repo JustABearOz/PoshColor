@@ -1,7 +1,7 @@
 # PSColorizer
 PSColorizer is a new take on [PSColor](https://github.com/Davlind/PSColor), allowing you to customise items in powershell based on your own color preferences.
 
-PSColozier can use either standard console colors or RGB.
+PSColozier can use either standard console colors or 8 bit RGB.
 
 ## Features
 * Colors can be set to RGB
@@ -14,6 +14,12 @@ PSColozier can use either standard console colors or RGB.
 There are currently 2 themes that come with PSColorizer
 * Default, a theme that uses named console colors
 * DefaultHighColor, a theme that uses RGB values
+
+### Included themes
+|Theme Name| Description|
+|--|--|
+|Default|The default theme using standard terminal colors|
+|DefaultHighColor| Similar styling to Default, but uses 8 bit RGB colors|
 
 ## Comands
 |Command|Description|
