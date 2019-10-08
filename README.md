@@ -29,4 +29,10 @@ There are currently 2 themes that come with PSColorizer
 |Get-ColorizerThemes|Gets a list of all installed colorizer themes|
 
 ## Installation
-_instructions coming soon, I'm working on having PSColorizer submitted to Powershell Gallary for easy installation_
+```powershell
+git clone https://github.com/JustABearOz/PSColorizer.git
+
+.\PSColorizer\Install.ps1
+
+Import-Module PSColorizer
+```
