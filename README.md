@@ -32,7 +32,9 @@ There are currently 2 themes that come with PSColorizer
 ```powershell
 git clone https://github.com/JustABearOz/PSColorizer.git
 
-.\PSColorizer\Install.ps1
+sl .\PSColorizer
+
+.\Install.ps1
 ```
 
 Install.ps1 will load the PSColorizer module for your current session. If you want the PSColorizer module loaded for all sessions, add the following line to your profile
