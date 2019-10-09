@@ -82,6 +82,9 @@ $OnRemoveScript = {
 # Import helpers
 . "$PSScriptRoot\New-CommandWrapper.ps1"
 . "$PSScriptRoot\PSColorizerFunctions.ps1"
+. "$PSScriptRoot\Renderers\ServiceControllerRenderer.ps1"
+. "$PSScriptRoot\Renderers\FileRenderer.ps1"
+. "$PSScriptRoot\Renderers\MatchInfoRenderer.ps1"
 
 # if no theme has been set, set the default
 if ($null -eq [System.Environment]::GetEnvironmentVariable("PSColorizerTheme", [System.EnvironmentVariableTarget]::User))
