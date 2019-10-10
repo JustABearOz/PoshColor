@@ -39,7 +39,7 @@ sl .\PSColorizer
 ```
 
 ### Install from Zip
-Download the latest (release)[https://github.com/JustABearOz/PSColorizer/releases] and extract it into your powershell modules directory. 
+Download the latest [release](https://github.com/JustABearOz/PSColorizer/releases) and extract it into your powershell modules directory. 
 
 ### Add to Profile
 The above installation methods will load the PSColorizer module for your current session. If you want the PSColorizer module loaded for all sessions, add the following line to your profile
