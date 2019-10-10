@@ -7,7 +7,7 @@ if ((Test-Path $modulePath) -eq $false)
     New-Item $modulePath -Type Directory
 }
 
-$module = (Get-Module .\PSColorizer.psd1 -ListAvailable)
+$module = (Get-Module .\src\PSColorizer.psd1 -ListAvailable)
 
 $major = $module.Version.Major.ToString()
 $minor = $module.Version.Minor.ToString()
@@ -23,6 +23,6 @@ if ((Test-Path $modulePath) -eq $false)
     New-Item $modulePath -Type Directory
 }
 
-copy-item * $modulePath -Recurse -Exclude @("Install.ps1", "README.md", "LICENCE") -Force
+copy-item .\src\* $modulePath -Recurse -Force
 
 Import-Module "$modulePath\PSColorizer.psd1"
