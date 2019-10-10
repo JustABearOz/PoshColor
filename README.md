@@ -29,6 +29,7 @@ There are currently 2 themes that come with PSColorizer
 |Get-ColorizerThemes|Gets a list of all installed colorizer themes|
 
 ## Installation
+### Install from source
 ```powershell
 git clone https://github.com/JustABearOz/PSColorizer.git
 
@@ -37,7 +38,11 @@ sl .\PSColorizer
 .\Install.ps1
 ```
 
-Install.ps1 will load the PSColorizer module for your current session. If you want the PSColorizer module loaded for all sessions, add the following line to your profile
+### Install from Zip
+Download the latest (release)[https://github.com/JustABearOz/PSColorizer/releases] and extract it into your powershell modules directory. 
+
+### Add to Profile
+The above installation methods will load the PSColorizer module for your current session. If you want the PSColorizer module loaded for all sessions, add the following line to your profile
 ```pwsh
 Import-Module PSColorizer
 ```
