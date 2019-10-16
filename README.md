@@ -4,9 +4,12 @@ PSColorizer is a new take on [PSColor](https://github.com/Davlind/PSColor), allo
 PSColozier can use either standard console colors or 8 bit RGB.
 
 ## Features
-* Colors can be set to RGB
+* Colors can be set to RGB or Named colors from .Net (System.Drawing.Color)
 * Background colors can be set
-* Files & Directories can have more complicated rules for coloring including based on Attributes
+* Coloring of Files, Directories, Services, and MatchInfo (from select-string)
+* Files & Directories can have rules for coloring including based the following:
+  * File Names using regular expressions
+  * File Attributes such as directory, hidden, system, encypted or compressed
 * Theme support
 * Can be unloaded/reloaded without causing issues in your current session
 
@@ -20,6 +23,7 @@ There are currently 2 themes that come with PSColorizer
 |--|--|
 |Default|The default theme using standard terminal colors|
 |DefaultHighColor| Similar styling to Default, but uses 8 bit RGB colors|
+|Cool| Uses RGB colors to provide a theme based on whites, blues and greens|
 
 ## Comands
 |Command|Description|

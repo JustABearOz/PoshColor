@@ -50,7 +50,7 @@ function New-TextColorVTSequence{
     return "$result" + "m"
 }
 
-function Color-ToHex
+function Convert-ToRGB
 {
     param([System.String]$color)
 
@@ -98,7 +98,7 @@ function Write-HostColor
         ## Try and parse colours as named colors
         if (!$foreground.StartsWith("#"))
         {
-            $foreground = (Color-ToHex $foreground)
+            $foreground = (Convert-ToRGB $foreground)
         }
         
         $foregroundSequence = New-ForegroundVTSequence -hexColor $foreground
@@ -107,7 +107,7 @@ function Write-HostColor
         {
             if (!$background.StartsWith("#"))
             {
-                $background = (Color-ToHex $background)
+                $background = (Convert-ToRGB $background)
             }
 
             $backgroundSequence = New-BackgroundVTSequence -hexColor $background
@@ -143,6 +143,3 @@ function Trim
 
     return $text;
 }
-
-
-# return test return test return
