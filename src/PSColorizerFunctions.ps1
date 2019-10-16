@@ -50,6 +50,23 @@ function New-TextColorVTSequence{
     return "$result" + "m"
 }
 
+function Color-ToHex
+{
+    param([System.String]$color)
+
+    $colorValue = [System.Drawing.Color]::FrmName($color)
+
+    # if the passed in color name is not a known name, just use white
+    if (!$colorValue.IsKnownColor)
+    {
+        $colorValue = [System.Drawing.Color]::White
+    }
+
+    $hexValue = "#" + $colorValue.R.ToString() + $colorValue.G.ToString() + $colorValue.B.ToString()
+
+    return $hexValue
+}
+
 function Write-HostColor
 {
     param ([Parameter(Position=0)] [System.String] $text, [Parameter(Position=1)][System.String] $foreground,  [System.String] $background, [switch] $noNewLine = $false)
@@ -77,10 +94,22 @@ function Write-HostColor
         }
     }
     else {
+
+        ## Try and parse colours as named colors
+        if (!$foreground.StartsWith("#"))
+        {
+            $foreground = (Color-ToHex $foreground)
+        }
+        
         $foregroundSequence = New-ForegroundVTSequence -hexColor $foreground
 
         if ($background)
         {
+            if (!$background.StartsWith("#"))
+            {
+                $background = (Color-ToHex $background)
+            }
+
             $backgroundSequence = New-BackgroundVTSequence -hexColor $background
         }
 
