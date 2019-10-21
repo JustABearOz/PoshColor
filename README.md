@@ -13,6 +13,8 @@ PSColozier can use either standard console colors or 8 bit RGB.
 * Theme support
 * Can be unloaded/reloaded without causing issues in your current session
 
+![alt text](https://github.com/JustABearOz/PSColorizer/tree/master/images/lsresult.png "Get-ChildItem Result")
+
 
 ## Themes
 There are currently 3 themes that come with PSColorizer
