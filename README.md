@@ -18,9 +18,7 @@ PSColozier can use either standard console colors or 8 bit RGB.
 
 
 ## Themes
-There are currently 3 themes that come with PSColorizer
-* Default, a theme that uses named console colors
-* DefaultHighColor, a theme that uses RGB values
+There are currently 3 themes that come with PSColorizer.
 
 ### Included themes
 |Theme Name| Description|
