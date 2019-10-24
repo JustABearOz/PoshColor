@@ -54,7 +54,7 @@ function Convert-ToRGB
 {
     param([System.String]$color)
 
-    $colorValue = [System.Drawing.Color]::FrmName($color)
+    $colorValue = [System.Drawing.Color]::FromName($color)
 
     # if the passed in color name is not a known name, just use white
     if (!$colorValue.IsKnownColor)

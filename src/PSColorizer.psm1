@@ -7,7 +7,11 @@ function Get-ColorizerThemes
         .EXAMPLE
             Get-ColorizerThemes
     #>
-    get-childitem "$PSScriptRoot\Themes\*.ps1" | foreach-object { Write-Host $_.Name.Replace(".ps1", "") }
+    $themePath = Join-Path $PSScriptRoot "Themes"
+
+    $themePath = Join-Path $themePath "*.ps1"
+    
+    get-childitem $themePath | foreach-object { Write-Host $_.Name.Replace(".ps1", "") }
 }
 
 function Get-ColorizerTheme
@@ -19,7 +23,19 @@ function Get-ColorizerTheme
         .EXAMPLE
             Get-ColorizerTheme
     #>
-    return [System.Environment]::GetEnvironmentVariable("PSColorizerTheme", [System.EnvironmentVariableTarget]::User)
+    $themeName = [System.Environment]::GetEnvironmentVariable("PSColorizerTheme", [System.EnvironmentVariableTarget]::User)
+
+    if (!($themeName))
+    {
+        $themeName = 'Default'
+    }
+
+    if ($themeName.Length -eq 0)
+    {
+        $themeName = 'Default'
+    }
+
+    return $themeName
 }
 
 function Set-ColorizerTheme
@@ -51,7 +67,13 @@ function Import-ColorizerTheme
 {
     $themeName = [System.Environment]::GetEnvironmentVariable("PSColorizerTheme", [System.EnvironmentVariableTarget]::User)
 
-    $theme = "$PSScriptRoot\Themes\$themeName.ps1"
+    if (!($themeName))
+    {
+        $themeName = "Default"
+    }
+
+    $theme = Join-Path $PSScriptRoot "Themes"
+    $theme = Join-Path $theme "$themeName.ps1"
 
     # Import the configured theme
     . "$theme"
@@ -80,11 +102,23 @@ $OnRemoveScript = {
 }
 
 # Import helpers
-. "$PSScriptRoot\New-CommandWrapper.ps1"
-. "$PSScriptRoot\PSColorizerFunctions.ps1"
-. "$PSScriptRoot\Renderers\ServiceControllerRenderer.ps1"
-. "$PSScriptRoot\Renderers\FileRenderer.ps1"
-. "$PSScriptRoot\Renderers\MatchInfoRenderer.ps1"
+$import = Join-Path $PSScriptRoot "New-CommandWrapper.ps1"
+. $import
+
+$import = Join-Path $PSScriptRoot "PSColorizerFunctions.ps1"
+. $import
+
+$import = Join-Path $PSScriptRoot "Renderers"
+$import = Join-Path $import "ServiceControllerRenderer.ps1"
+. $import
+
+$import = Join-Path $PSScriptRoot "Renderers"
+$import = Join-Path $import "FileRenderer.ps1"
+. $import
+
+$import = Join-Path $PSScriptRoot "Renderers"
+$import = Join-Path $import "MatchInfoRenderer.ps1"
+. $import
 
 # if no theme has been set, set the default
 if ($null -eq [System.Environment]::GetEnvironmentVariable("PSColorizerTheme", [System.EnvironmentVariableTarget]::User))

@@ -8,9 +8,11 @@ if ((Test-Path $modulePath) -eq $false)
 }
 
 $psColorizerModule = Join-Path . "src"
-$psColorizerModule = Join-Path psColorizerModule "PSColorizer.psd1"
+$psColorizerModule = Join-Path $psColorizerModule "PSColorizer.psd1"
 
 $module = (Get-Module $psColorizerModule -ListAvailable)
+
+Write-Host $module.Version
 
 $major = $module.Version.Major.ToString()
 $minor = $module.Version.Minor.ToString()
@@ -23,11 +25,14 @@ $modulePath = Join-Path $modulePath $version
 
 if ((Test-Path $modulePath) -eq $false)
 {
+    Write-Host "Creating Module Path $modulePath"
+
     New-Item $modulePath -Type Directory
 }
 
-copy-item .\src\* $modulePath -Recurse -Force
+$moduleSource = Join-Path "." "src"
+$moduleSource = Join-Path $moduleSource "*"
 
-$moduleFile = Join-Path $modulePath "PSColorizer.psd1"
+copy-item $moduleSource $modulePath -Recurse -Force
 
-Import-Module $moduleFile
+Import-Module PSColorizer
