@@ -28,7 +28,7 @@ else
     remove-item $removeItems -recurse -force
 }
 
-$targetfile = Join-Path -Path $target -ChildPath "PSCOlorizer.zip"
+$targetfile = Join-Path -Path $target -ChildPath "PSColorizer.zip"
 
 Write-Host "Creating release package $targetfile" 
 
