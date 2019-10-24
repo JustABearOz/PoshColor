@@ -1,4 +1,4 @@
-$modulePath = $env:PSModulePath.Split(";")[0]
+$modulePath = $env:PSModulePath.Split([IO.Path]::PathSeparator)[0]
 
 $modulePath = Join-Path $modulePath "PSColorizer"
 
@@ -7,7 +7,10 @@ if ((Test-Path $modulePath) -eq $false)
     New-Item $modulePath -Type Directory
 }
 
-$module = (Get-Module .\src\PSColorizer.psd1 -ListAvailable)
+$psColorizerModule = Join-Path . "src"
+$psColorizerModule = Join-Path psColorizerModule "PSColorizer.psd1"
+
+$module = (Get-Module $psColorizerModule -ListAvailable)
 
 $major = $module.Version.Major.ToString()
 $minor = $module.Version.Minor.ToString()
@@ -16,7 +19,7 @@ $revision = $module.Version.Revision.ToString()
 
 $version = $major + "." + $minor + "." + $build + "." + $revision
 
-$modulePath = [System.IO.Path]::Join($modulePath, $version)
+$modulePath = Join-Path $modulePath $version
 
 if ((Test-Path $modulePath) -eq $false)
 {
