@@ -9,8 +9,8 @@ function ZipFiles( $zipfilename, $sourcedir )
 
 $Error.Clear()
 
-$source = "$PSScriptRoot\src"
-$target = "$PSScriptRoot\release"
+$source = Join-Path -Path $PSScriptRoot -ChildPath "src"
+$target = Join-Path -Path $PSScriptRoot -ChildPath "release"
 
 if (!(Test-Path $target))
 {
@@ -23,10 +23,12 @@ else
 {
     Write-Host "Cleaning Release directory"
 
-    remove-item $target\* -recurse -force
+    $removeItems = Join-Path $target "*"
+
+    remove-item $removeItems -recurse -force
 }
 
-$targetfile = "$target\PSColorizer.zip"
+$targetfile = Join-Path -Path $target -ChildPath "PSCOlorizer.zip"
 
 Write-Host "Creating release package $targetfile" 
 
