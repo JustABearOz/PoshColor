@@ -1,6 +1,6 @@
-$modulePath = $env:psmodulePath.Split(";")[0]
+$modulePath = $env:PSModulePath.Split(";")[0]
 
-$modulePath = [System.IO.Path]::Join($modulePath, "PSColorizer")
+$modulePath = Join-Path $modulePath "PSColorizer"
 
 if ((Test-Path $modulePath) -eq $false)
 {
@@ -25,4 +25,6 @@ if ((Test-Path $modulePath) -eq $false)
 
 copy-item .\src\* $modulePath -Recurse -Force
 
-Import-Module "$modulePath\PSColorizer.psd1"
+$moduleFile = Join-Path $modulePath "PSColorizer.psd1"
+
+Import-Module $moduleFile
