@@ -23,16 +23,16 @@ function Get-ColorizerTheme
         .EXAMPLE
             Get-ColorizerTheme
     #>
-    $themeName = [System.Environment]::GetEnvironmentVariable("PSColorizerTheme", [System.EnvironmentVariableTarget]::User)
-
-    if (!($themeName))
+    if ($IsWindows)
     {
-        $themeName = 'Default'
+        $themeName = [System.Environment]::GetEnvironmentVariable("PSColorizerTheme", [System.EnvironmentVariableTarget]::User)
     }
-
-    if ($themeName.Length -eq 0)
-    {
-        $themeName = 'Default'
+    else {
+        # Read from a user config file
+        if (Test-Path "~/PSColorizer.config")
+        {
+            $themeName = Get-Content ~/PSColorizer.config
+        }
     }
 
     return $themeName
@@ -55,7 +55,14 @@ function Set-ColorizerTheme
         [switch] $Import
         )
 
-    [System.Environment]::SetEnvironmentVariable("PSColorizerTheme", $ThemeName, [System.EnvironmentVariableTarget]::User)
+        if ($IsWindows)
+    {
+        [System.Environment]::SetEnvironmentVariable("PSColorizerTheme", $ThemeName, [System.EnvironmentVariableTarget]::User)
+    }
+    else
+    {
+        Set-Content "~/PSColorizer.config" $ThemeName
+    }
 
     if ($Import)
     {
@@ -65,7 +72,7 @@ function Set-ColorizerTheme
 
 function Import-ColorizerTheme
 {
-    $themeName = [System.Environment]::GetEnvironmentVariable("PSColorizerTheme", [System.EnvironmentVariableTarget]::User)
+    $themeName = Get-ColorizerTheme
 
     if (!($themeName))
     {
@@ -121,9 +128,11 @@ $import = Join-Path $import "MatchInfoRenderer.ps1"
 . $import
 
 # if no theme has been set, set the default
-if ($null -eq [System.Environment]::GetEnvironmentVariable("PSColorizerTheme", [System.EnvironmentVariableTarget]::User))
+$theme = Get-ColorizerTheme
+
+if (!$theme)
 {
-    [System.Environment]::SetEnvironmentVariable("PSColorizerTheme", "Default", [System.EnvironmentVariableTarget]::User)
+    Set-ColorizerTheme 'Default'
 }
 
 Import-ColorizerTheme
