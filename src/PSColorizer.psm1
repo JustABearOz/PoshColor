@@ -148,17 +148,24 @@ $originalCommand = New-CommandWrapper Out-Default -Process {
 
     $handled = $false
 
-    if(($_ -is [System.IO.DirectoryInfo]) -or ($_ -is [System.IO.FileInfo]))
-    {
-        $handled = Write-File $_
-    }
-    elseif($_ -is [System.ServiceProcess.ServiceController])
-    {
-        $handled = Write_Service $_
-    }
-    elseif($_ -is [Microsoft.Powershell.Commands.MatchInfo])
-    {
-        $handled = Write-Match $_
+    try {
+        
+        if(($_ -is [System.IO.DirectoryInfo]) -or ($_ -is [System.IO.FileInfo]))
+        {
+            $handled = Write-File $_
+        }
+        elseif($_ -is [System.ServiceProcess.ServiceController])
+        {
+            $handled = Write_Service $_
+        }
+        elseif($_ -is [Microsoft.Powershell.Commands.MatchInfo])
+        {
+            $handled = Write-Match $_
+        }
+        
+        }
+    catch {
+        
     }
     
     if ($handled)
