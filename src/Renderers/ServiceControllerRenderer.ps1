@@ -16,23 +16,35 @@ function Write_Service
 
     Write-ServiceHeader
 
-    $trimmedName = Trim $item.Name 18
-    $trimmedDisplayName = Trim $item.DisplayName 38
-    $status = $item.Status
-    $startup = Trim $item.StartupType 20
-
     $foreground = $global:PSColorizer.Service.Default.Color
     $background = $global:PSColorizer.Service.Default.BackgroundColor
 
-    if ($item.Status -eq 'Running')
-    {
-        $foreground = $global:PSColorizer.Service.Running.Color
-        $background = $global:PSColorizer.Service.Running.BackgroundColor
+    try {
+        
+        $trimmedName = Trim $item.Name 18
+        $trimmedDisplayName = Trim $item.DisplayName 38
+
+        $status = "Unknown"
+        $startup = "Unknown"
+        
+        $startup = Trim $item.StartupType 20 -ErrorAction SilentlyContinue
+
+        $status = $item.Status
+
+        if ($item.Status -eq 'Running')
+        {
+            $foreground = $global:PSColorizer.Service.Running.Color
+            $background = $global:PSColorizer.Service.Running.BackgroundColor
+        }
+        elseif ($item.Status -eq 'Stopped')
+        {
+            $foreground = $global:PSColorizer.Service.Stopped.Color
+            $background = $global:PSColorizer.Service.Stopped.BackgroundColor
+        }
+
     }
-    elseif ($item.Status -eq 'Stopped')
-    {
-        $foreground = $global:PSColorizer.Service.Stopped.Color
-        $background = $global:PSColorizer.Service.Stopped.BackgroundColor
+    catch {
+        ## Use default colours
     }
 
     $statusText = [String]::Format("{0, -8}", $status)

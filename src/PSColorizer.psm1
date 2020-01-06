@@ -162,8 +162,7 @@ $originalCommand = New-CommandWrapper Out-Default -Process {
         {
             $handled = Write-Match $_
         }
-        
-        }
+    }
     catch {
         
     }
