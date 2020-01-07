@@ -19,32 +19,55 @@ function Write_Service
     $foreground = $global:PSColorizer.Service.Default.Color
     $background = $global:PSColorizer.Service.Default.BackgroundColor
 
-    try {
-        
-        $trimmedName = Trim $item.Name 18
-        $trimmedDisplayName = Trim $item.DisplayName 38
+    $name = $item.Name
 
-        $status = "Unknown"
-        $startup = "Unknown"
-        
-        $startup = Trim $item.StartupType 20 -ErrorAction SilentlyContinue
+    $trimmedName = Trim $name 18
 
-        $status = $item.Status
+    $displayName = $item.DisplayName
 
-        if ($item.Status -eq 'Running')
-        {
-            $foreground = $global:PSColorizer.Service.Running.Color
-            $background = $global:PSColorizer.Service.Running.BackgroundColor
-        }
-        elseif ($item.Status -eq 'Stopped')
-        {
-            $foreground = $global:PSColorizer.Service.Stopped.Color
-            $background = $global:PSColorizer.Service.Stopped.BackgroundColor
-        }
-
+    if (!$displayName -or $null -eq $displayName)
+    {
+        $displayName = ""
     }
-    catch {
-        ## Use default colours
+
+    $trimmedDisplayName = Trim $displayName 38
+        
+    if ($null -eq $item.StartupType)
+    {
+        $startupType = "Unknown"
+    }
+    else {
+        $startupType = $item.StartupType.ToString()
+
+        if (!$startupType -or  $null -eq $startupType)
+        {
+            $startupType = "Unknown"
+        }
+    }
+    
+    $startup = Trim $startupType 20
+
+    $status = $item.Status.ToString()
+
+    if ($status -eq 'Running')
+    {
+        $foreground = $global:PSColorizer.Service.Running.Color
+        $background = $global:PSColorizer.Service.Running.BackgroundColor
+    }
+    elseif ($status -eq 'Stopped')
+    {
+        $foreground = $global:PSColorizer.Service.Stopped.Color
+        $background = $global:PSColorizer.Service.Stopped.BackgroundColor
+    }
+
+    if (!$status -or $status -eq "")
+    {
+        $status = "Unknown"
+    }
+
+    if (!$startup -or $startup -eq "")
+    {
+        $startup = "Unmknown";
     }
 
     $statusText = [String]::Format("{0, -8}", $status)

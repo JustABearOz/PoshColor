@@ -164,7 +164,7 @@ $originalCommand = New-CommandWrapper Out-Default -Process {
         }
     }
     catch {
-        
+        Write-Host $_.Exception.Message + ' ' + $_.InvocationInfo.ScriptLineNumber
     }
     
     if ($handled)
