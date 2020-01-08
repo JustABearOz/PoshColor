@@ -154,13 +154,13 @@ $originalCommand = New-CommandWrapper Out-Default -Process {
         {
             $handled = Write-File $_
         }
-        elseif($_ -is [System.ServiceProcess.ServiceController])
-        {
-            $handled = Write_Service $_
-        }
         elseif($_ -is [Microsoft.Powershell.Commands.MatchInfo])
         {
             $handled = Write-Match $_
+        }
+        elseif($_ -is [System.ServiceProcess.ServiceController])
+        {
+            $handled = Write_Service $_
         }
     }
     catch {
