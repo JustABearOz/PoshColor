@@ -1,7 +1,7 @@
 # PSColorizer
 PSColorizer is a new take on [PSColor](https://github.com/Davlind/PSColor), allowing you to customise items in powershell based on your own color preferences. PSColorizer works in Powershell Core and works across both Windows and Linux.
 
-PSColozier can use either standard console colors or 8 bit RGB.
+PSColozier can use either standard console colors or 8 bit RGB allowing 16 million colours.
 
 ## Features
 * Colors can be set to RGB or Named colors from .Net (System.Drawing.Color)
