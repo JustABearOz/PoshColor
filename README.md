@@ -53,3 +53,19 @@ The above installation methods will load the PSColorizer module for your current
 ```pwsh
 Import-Module PSColorizer
 ```
+
+### Themes
+To view a list of installed themes
+```powershell
+Get-ColorizerThemes
+```
+
+To set the current theme (Setting theme too Cool)
+```powershell
+Set-ColorizerTheme Cool
+```
+
+To view the current theme
+``` Powershell
+Get-ColorizerTheme
+```

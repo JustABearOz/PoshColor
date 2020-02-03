@@ -84,17 +84,17 @@ function Write-Match
     {
         Write-MatchContext $item.Context.DisplayPreContext  $item.RelativePath($pwd) ($item.LineNumber - $item.Context.DisplayPreContext.Count) -PrintFile
 
-        Write-HostColor '>> Line: ' -Foreground $global:PSColorizer.Match.Default.Color -Background $global:PSColorizer.Match.Default.BackgroundColor -noNewLine
+        Write-HostColor '-> Line: ' -Foreground $global:PSColorizer.Match.Default.Color -Background $global:PSColorizer.Match.Default.BackgroundColor -noNewLine
         Write-HostColor (Pad $item.LineNumber 6) -Foreground $global:PSColorizer.Match.LineNumber.Color -Background $global:PSColorizer.Match.LineNumber.BackgroundColor -noNewLine
         Write-MatchItem $item.Line $item.Matches
 
         Write-MatchContext $item.Context.DisplayPostContext  $item.RelativePath($pwd) ($item.LineNumber + 1)
     }
     else {
-        Write-HostColor '>> Line: ' -Foreground $global:PSColorizer.Match.Default.Color -Background $global:PSColorizer.Match.Default.BackgroundColor -NoNewline
+        Write-HostColor '-> Line: ' -Foreground $global:PSColorizer.Match.Default.Color -Background $global:PSColorizer.Match.Default.BackgroundColor -NoNewline
         Write-HostColor (Pad $item.LineNumber 6) -Foreground $global:PSColorizer.Match.LineNumber.Color -Background $global:PSColorizer.Match.LineNumber.BackgroundColor -noNewLine
         Write-HostColor $item.RelativePath($pwd) -Foreground $global:PSColorizer.Match.File.Color -Background $global:PSColorizer.Match.File.BackgroundColor -noNewLine
-        Write-HostColor ':' -Foreground  $global:PSColorizer.Match.Default.Color -Background $global:PSColorizer.Match.Default.BackgroundColor -noNewLine
+        Write-HostColor ': ' -Foreground  $global:PSColorizer.Match.Default.Color -Background $global:PSColorizer.Match.Default.BackgroundColor -noNewLine
         Write-MatchItem $item.Line $item.Matches
     }
     return $true;
