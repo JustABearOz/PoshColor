@@ -70,6 +70,6 @@ To view the current theme
 Get-ColorizerTheme
 ```
 
-### Questions
-# Why not contribute to PSColor?
+## Questions
+### Why not contribute to PSColor?
 PS Color seems to be a dead repository. There have not been any updates to the repo in a few years, and there are a few PRs that have been contributed that have not been accepted. ALSO, I thought it would be fun to do :)
