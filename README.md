@@ -1,7 +1,7 @@
 # PSColorizer
-PSColorizer is a new take on [PSColor](https://github.com/Davlind/PSColor), allowing you to customise items in powershell based on your own color preferences. PSColorizer works in Powershell Core and works across both Windows and Linux.
+PSColorizer is a blatant ripoff of [PSColor](https://github.com/Davlind/PSColor) :), allowing you to customise items in powershell based on your own color preferences. PSColorizer works in Powershell Core and works across both Windows and Linux.
 
-PSColozier can use either standard console colors or 8 bit RGB allowing 16 million colours.
+PSColozier can use either standard console colors or 8 bit RGB allowing 16 million colour goodness.
 
 ## Features
 * Colors can be set to RGB or Named colors from .Net (System.Drawing.Color)
@@ -14,9 +14,14 @@ PSColozier can use either standard console colors or 8 bit RGB allowing 16 milli
 * Theme support
 * Can be unloaded/reloaded without causing issues in your current session
 
+### Screenshot of Get-Childitem
 ![Screenshot of get-childitem](images/lsresult.png)
 
+### Screenshot of Select String
+![Screenshot of select-string](images/selectstringresult.png)
 
+### Screenshot of Select String with -Context 1
+![Screenshot of select-string with context](images/selectstringwithcontextresult.png)
 
 ## Themes
 There are currently 3 themes that come with PSColorizer.
@@ -72,4 +77,4 @@ Get-ColorizerTheme
 
 ## Questions
 ### Why not contribute to PSColor?
-PS Color seems to be a dead repository. There have not been any updates to the repo in a few years, and there are a few PRs that have been contributed that have not been accepted. ALSO, I thought it would be fun to do :)
+PS Color seems to be a dead repository. There have not been any updates to the repo in a few years, and there are a few outstanding issues that have not been resolved. Yes, I could fix these issues, but there are PRs others have raised to fix some of the issues which have not been accepted in years. ALSO, I thought it would be fun to do :)
