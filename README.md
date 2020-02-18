@@ -59,6 +59,12 @@ The above installation methods will load the PSColorizer module for your current
 Import-Module PSColorizer
 ```
 
+### Unload PSColorizer
+To unload PSColorizer from your session, run the following command in powershell
+```pwsh
+Remove-Module PSColorizer
+```
+
 ### Themes
 To view a list of installed themes
 ```powershell
