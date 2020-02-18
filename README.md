@@ -14,13 +14,10 @@ PSColozier can use either standard console colors or 8 bit RGB allowing 16 milli
 * Theme support
 * Can be unloaded/reloaded without causing issues in your current session
 
-Screenshot of Get-Childitem
+### Screenshot of Get-Childitem
 ![Screenshot of get-childitem](images/lsresult.png)
 
-Screenshot of Select String
-![Screenshot of select-string](images/selectstringresult.png)
-
-Screenshot of Select String with -Context 1
+### Screenshot of Select String with -Context 1
 ![Screenshot of select-string with context](images/selectstringwithcontextresult.png)
 
 ## Themes
