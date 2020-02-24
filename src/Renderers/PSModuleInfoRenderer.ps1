@@ -1,0 +1,69 @@
+function Write-ServiceHeader
+{
+    ## Do we need to write headers?
+    if (($script:currentDirectory -eq ""))
+    {
+        Write-Host
+        Write-Host "ModuleType Version    Name                                ExportedCommands"
+        Write-Host "---------- -------    ----                                ----------------"
+
+        $script:currentDirectory = "Modules"
+    }
+}
+
+function Write-Module
+{
+    param ([Parameter(Mandatory=$True,Position=1)] $item)
+
+    Write-ServiceHeader
+
+
+    $foreground = $global:PSColorizer.Module.Default.Color    
+
+    if ($item.ModuleType.ToString() -eq 'Binary') {
+        $foreground = $global:PSColorizer.Module.Binary.Color
+    }
+    elseif($item.ModuleType.ToString() -eq 'Cim') {
+        $foreground =  $global:PSColorizer.Module.Cim.Color
+    }
+    elseif($item.ModuleType.ToString() -eq 'Manifest') {
+        $foreground =  $global:PSColorizer.Module.Manifest.Color
+    }
+    elseif($item.ModuleType.ToString() -eq 'Script') {
+        $foreground =  $global:PSColorizer.Module.Script.Color
+    }
+    elseif($item.ModuleType.ToString() -eq 'Workflow') {
+        $foreground =  $global:PSColorizer.Module.Workflow.Colorz
+    }
+
+    $info = [String]::Format("{0,-10} {1, -10} {2, -35}", $item.ModuleType, $item.Version, $item.Name)
+
+    $commands = [String]::Join(",", $item.ExportedCommands.Keys)
+
+    $width = $Host.UI.RawUI.WindowSize.Width - $info.Length - 5;
+
+    if ($width -lt 30)
+    {
+        $width = 30
+    }
+
+    if ($commands.Length -ge $width)
+    {
+        $commands = $commands.Substring(0, $width) + ".."
+    }
+
+    $info = $info + "{$commands}"
+
+    Write-HostColor $info -Foreground $foreground
+
+    # $commands = ""
+
+    # foreach($key in $item.ExportedCommands.Keys)
+    # {
+    #     Write-Host $key
+    #     $commands =  + $commands + ", $key" 
+    # }
+
+
+    return $true;
+}

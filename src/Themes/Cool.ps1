@@ -15,9 +15,9 @@ $global:PSColorizer = @{
         Default    = @{ Color = '#dddddd' }
     }
     Service = @{
-        Running = @{ Color = "#00bb00"}
-        Stopped = @{ Color = "#00aadd"}
-        Default = @{ Color = "#505050"}
+        Running = @{ Color = '#00bb00'}
+        Stopped = @{ Color = '#00aadd'}
+        Default = @{ Color = '#505050'}
         Properties = @{ Color = '#dddddd'}
     }
     Match = @{
@@ -26,5 +26,13 @@ $global:PSColorizer = @{
         Match = @{Color = '#dddddd'}
         LineNumber = @{Color = '#0055aa'}
         File = @{Color = '#00bb00'}
+    }
+    Module = @{
+        Default = @{Color = '#dddddd'}
+        Binary = @{Color = '#cccccc'}
+        Cim = @{Color = '#505050'}
+        Manifest = @{Color = '#11cc11'}
+        Script = @{Color = '#00aadd'}
+        Workflow = @{Color = '#00ffaa'}
     }
 }

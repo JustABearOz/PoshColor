@@ -27,4 +27,11 @@ $global:PSColorizer = @{
         LineNumber = @{Color = '#ff0000'}
         File = @{Color = '#00bb00'}
     }
+    Module = @{
+        Binary = @{Color = '#dddddd'}
+        Cim = @{Color = '#00aadd'}
+        Manifest = @{Color = '#11cc11'}
+        Script = @{Color = '#dddd00'}
+        Workflow = @{Color = '#bb00bb'}
+    }
 }
