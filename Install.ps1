@@ -1,10 +1,16 @@
+if ((get-module PSColorizer) -ne $null)
+{
+    ## Uninstall the existing Version
+    Remove-Module PSColorizer
+}
+
 $modulePath = $env:PSModulePath.Split([IO.Path]::PathSeparator)[0]
 
 $modulePath = Join-Path $modulePath "PSColorizer"
 
 if ((Test-Path $modulePath) -eq $false)
 {
-    New-Item $modulePath -Type Directory
+    New-Item $modulePath -Type Directory    
 }
 
 $psColorizerModule = Join-Path . "src"
