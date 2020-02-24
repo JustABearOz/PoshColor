@@ -36,11 +36,11 @@ function Write-Module
         $foreground =  $global:PSColorizer.Module.Workflow.Colorz
     }
 
-    $info = [String]::Format("{0,-10} {1, -10} {2, -35}", $item.ModuleType, $item.Version, $item.Name)
+    $info = [String]::Format("{0,-10} {1, -10} {2, -36}", $item.ModuleType, $item.Version, $item.Name)
 
     $commands = [String]::Join(",", $item.ExportedCommands.Keys)
 
-    $width = $Host.UI.RawUI.WindowSize.Width - $info.Length - 5;
+    $width = $Host.UI.RawUI.WindowSize.Width - $info.Length - 6;
 
     if ($width -lt 30)
     {
@@ -55,15 +55,6 @@ function Write-Module
     $info = $info + "{$commands}"
 
     Write-HostColor $info -Foreground $foreground
-
-    # $commands = ""
-
-    # foreach($key in $item.ExportedCommands.Keys)
-    # {
-    #     Write-Host $key
-    #     $commands =  + $commands + ", $key" 
-    # }
-
 
     return $true;
 }
