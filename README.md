@@ -85,4 +85,4 @@ Get-ColorizerTheme
 
 ## Questions
 ### Why not contribute to PSColor?
-PS Color seems to be a dead repository. There have not been any updates to the repo in a few years, and there are a few outstanding issues that have not been resolved. Yes, I could fix these issues, but there are PRs others have raised to fix some of the issues which have not been accepted in years. ALSO, I thought it would be fun to do :)
+PS Color seems to be a dead repository. There have not been any updates to the repo in a few years, and there are a few outstanding issues that have not been resolved. Yes, I could fix these issues, however there are PRs others have raised to fix some of the issues which have not been accepted in years. ALSO, I thought it would be fun to do :)
