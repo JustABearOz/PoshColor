@@ -17,7 +17,6 @@ function Write-EventLog
 
     Write-ServiceHeader
 
-
     $foreground = $global:PSColorizer.EventLog.Default.Color    
 
     if ($item.Level -eq 1)
@@ -38,21 +37,6 @@ function Write-EventLog
         $foreground = $global:PSColorizer.EventLog.Information.Color
     }
 
-    # if ($item.ModuleType.ToString() -eq 'Binary') {
-    #     $foreground = $global:PSColorizer.Module.Binary.Color
-    # }
-    # elseif($item.ModuleType.ToString() -eq 'Cim') {
-    #     $foreground =  $global:PSColorizer.Module.Cim.Color
-    # }
-    # elseif($item.ModuleType.ToString() -eq 'Manifest') {
-    #     $foreground =  $global:PSColorizer.Module.Manifest.Color
-    # }
-    # elseif($item.ModuleType.ToString() -eq 'Script') {
-    #     $foreground =  $global:PSColorizer.Module.Script.Color
-    # }
-    # elseif($item.ModuleType.ToString() -eq 'Workflow') {
-    #     $foreground =  $global:PSColorizer.Module.Workflow.Colorz
-    # }
     $providerName = $item.ProviderName.ToString()
 
     if ($providerName.Length -gt 20)
@@ -61,21 +45,6 @@ function Write-EventLog
     }
 
     $info = [String]::Format("{0,-22} {1, -7} {2, -12} {3, -20} {4}", $item.TimeCreated.ToString("G"), $item.Id, $item.LevelDisplayName, $providerName, $item.Message)
-
-    # $commands = [String]::Join(",", $item.ExportedCommands.Keys)
-
-    # $width = $Host.UI.RawUI.WindowSize.Width - $info.Length - 6;
-
-    # if ($width -lt 30)
-    # {
-    #     $width = 30
-    # }
-
-    # if ($commands.Length -ge $width)
-    # {
-    #     $commands = $commands.Substring(0, $width) + ".."
-    # }
-
 
     Write-HostColor $info -Foreground $foreground
 
