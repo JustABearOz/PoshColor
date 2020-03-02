@@ -131,6 +131,11 @@ $import = Join-Path $PSScriptRoot "Renderers"
 $import = Join-Path $import "PSModuleInfoRenderer.ps1"
 . $import
 
+$import = Join-Path $PSScriptRoot "Renderers"
+$import = Join-Path $import "EventLogRecordRenderer.ps1"
+. $import
+
+
 # if no theme has been set, set the default
 $theme = Get-ColorizerTheme
 
@@ -165,6 +170,10 @@ $originalCommand = New-CommandWrapper Out-Default -Process {
         elseif($_ -is [System.Management.Automation.PSModuleInfo])
         {
             $handled = Write-Module $_
+        }
+        elseif($_ -is [System.Diagnostics.Eventing.Reader.EventLogRecord])
+        {
+            $handled = Write-EventLog $_
         }
         elseif($_ -is [System.ServiceProcess.ServiceController])
         {

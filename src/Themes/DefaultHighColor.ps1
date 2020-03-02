@@ -34,4 +34,11 @@ $global:PSColorizer = @{
         Script = @{Color = '#dddd00'}
         Workflow = @{Color = '#bb00bb'}
     }
+    EventLog = @{
+        Critical = @{Color = '#aa11aa'}
+        Error  = @{Color = '#dd0000'}
+        Warning = @{Color = '#dddd00'}
+        Information = @{Color = '#cccccc'}
+        Default = @{Color = '#dddddd'}
+    }
 }
