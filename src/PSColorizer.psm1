@@ -171,13 +171,18 @@ $originalCommand = New-CommandWrapper Out-Default -Process {
         {
             $handled = Write-Module $_
         }
-        elseif($_ -is [System.Diagnostics.Eventing.Reader.EventLogRecord])
+
+        ## Platform specific, Win32
+        if ([System.Environment]::OSVersion.Platform -eq 'Win32NT')
         {
-            $handled = Write-EventLog $_
-        }
-        elseif($_ -is [System.ServiceProcess.ServiceController])
-        {
-            $handled = Write_Service $_
+            if($_ -is [System.Diagnostics.Eventing.Reader.EventLogRecord])
+            {
+                $handled = Write-EventLog $_
+            }
+            elseif($_ -is [System.ServiceProcess.ServiceController])
+            {
+                $handled = Write_Service $_
+            }
         }
     }
     catch {
