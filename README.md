@@ -11,6 +11,8 @@ PSColozier can use either standard console colors or 8 bit RGB allowing 16 milli
   * Files, Directories (ls / get-childitem)
   * Services (get-service)
   * MatchInfo (select-string)
+  * PSModuleInfo (get-module)
+  * EventLogRecord (get-winevent)
 * Files & Directories can have rules for coloring including based the following:
   * File Names using regular expressions
   * File Attributes such as directory, hidden, system, encypted or compressed
