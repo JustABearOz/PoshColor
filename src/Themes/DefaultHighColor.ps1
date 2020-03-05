@@ -41,4 +41,17 @@ $global:PSColorizer = @{
         Information = @{Color = '#cccccc'}
         Default = @{Color = '#dddddd'}
     }
+    PSDriveInfo = @{
+        Alias = @{Color = '#505050'}
+        FileSystem = @{Color = '#00bb00'}
+        Certificate = @{Color = '#505050'}
+        Environment = @{Color = '#505050'}
+        Function = @{Color = '#dddd00'}
+        Registry = @{Color = '#006600'}
+        Variable = @{Color = '#bb00bb'}
+        WSMan = @{Color = '#505050'}
+        Default = @{Color = '#cccccc'}
+        LowSpace = @{Color = '#dd0000'}
+        LowSpacePercent = @{Value = 20}
+    }
 }
