@@ -164,38 +164,38 @@ $originalCommand = New-CommandWrapper Out-Default -Process {
 
     $handled = $false
 
-    try {
-        
-        if(($_ -is [System.IO.DirectoryInfo]) -or ($_ -is [System.IO.FileInfo]))
-        {
-            $handled = Write-File $_
-        }
-        elseif($_ -is [Microsoft.Powershell.Commands.MatchInfo])
-        {
-            $handled = Write-Match $_
-        }
-        elseif($_ -is [System.Management.Automation.PSModuleInfo])
-        {
-            $handled = Write-Module $_
-        }
-        elseif($_ -is [System.Management.Automation.PSDriveInfo])
-        {
-            $handled = Write-PSDrive $_
-        }
-        elseif($_ -is [System.Management.Automation.ApplicationInfo] -or 
-            $_ -is [System.Management.Automation.CmdletInfo] -or 
-            $_ -is [System.Management.Automation.ExternalScriptInfo] -or 
-            $_ -is [System.Management.Automation.FunctionInfo] -or 
-            $_ -is [System.Management.Automation.RemoteCommandInfo] -or 
-            $_ -is [System.Management.Automation.ScriptInfo] -or
-            $_ -is [System.Management.Automation.AliasInfo])
-        {
-            $handled = Write-CommandInfo $_
-        }
+    if(($_ -is [System.IO.DirectoryInfo]) -or ($_ -is [System.IO.FileInfo]))
+    {
+        $handled = Write-File $_
+    }
+    elseif($_ -is [Microsoft.Powershell.Commands.MatchInfo])
+    {
+        $handled = Write-Match $_
+    }
+    elseif($_ -is [System.Management.Automation.PSModuleInfo])
+    {
+        $handled = Write-Module $_
+    }
+    elseif($_ -is [System.Management.Automation.PSDriveInfo])
+    {
+        $handled = Write-PSDrive $_
+    }
+    elseif($_ -is [System.Management.Automation.ApplicationInfo] -or 
+        $_ -is [System.Management.Automation.CmdletInfo] -or 
+        $_ -is [System.Management.Automation.ExternalScriptInfo] -or 
+        $_ -is [System.Management.Automation.FunctionInfo] -or 
+        $_ -is [System.Management.Automation.RemoteCommandInfo] -or 
+        $_ -is [System.Management.Automation.ScriptInfo] -or
+        $_ -is [System.Management.Automation.AliasInfo])
+    {
+        $handled = Write-CommandInfo $_
+    }
 
-        ## Platform specific, Win32
-        if ([System.Environment]::OSVersion.Platform -eq 'Win32NT')
-        {
+    ## Platform specific, Win32, not available in all version of powershell
+    if ([System.Environment]::OSVersion.Platform -eq 'Win32NT')
+    {
+        try {
+            
             if($_ -is [System.Diagnostics.Eventing.Reader.EventLogRecord])
             {
                 $handled = Write-EventLog $_
@@ -205,13 +205,11 @@ $originalCommand = New-CommandWrapper Out-Default -Process {
                 $handled = Write_Service $_
             }
         }
+        catch {
+            
+        }
     }
-    catch {
-        Write-Error -Exception $_.Exception
 
-        $handled = $false
-    }
-    
     if ($handled)
     {
         $_ = $null

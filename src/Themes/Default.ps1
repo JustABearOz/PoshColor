@@ -56,7 +56,7 @@ $global:PSColorizer = @{
     }
     CommandInfo = @{
         Default = @{Color = 'Gray'}
-        Alias = @{Color = 'LightBlue'}
+        Alias = @{Color = 'Blue'}
         Script = @{Color = 'DarkBlue'}
         Function = @{Color = 'Green'}
         CommandLet = @{Color = 'Cyan'}
