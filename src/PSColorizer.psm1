@@ -139,6 +139,9 @@ $import = Join-Path $PSScriptRoot "Renderers"
 $import = Join-Path $import "PSDriveInfoRenderer.ps1"
 . $import
 
+$import = Join-Path $PSScriptRoot "Renderers"
+$import = Join-Path $import "CommandInfoRenderer.ps1"
+. $import
 
 # if no theme has been set, set the default
 $theme = Get-ColorizerTheme
@@ -179,6 +182,16 @@ $originalCommand = New-CommandWrapper Out-Default -Process {
         {
             $handled = Write-PSDrive $_
         }
+        elseif($_ -is [System.Management.Automation.ApplicationInfo] -or 
+            $_ -is [System.Management.Automation.CmdletInfo] -or 
+            $_ -is [System.Management.Automation.ExternalScriptInfo] -or 
+            $_ -is [System.Management.Automation.FunctionInfo] -or 
+            $_ -is [System.Management.Automation.RemoteCommandInfo] -or 
+            $_ -is [System.Management.Automation.ScriptInfo] -or
+            $_ -is [System.Management.Automation.AliasInfo])
+        {
+            $handled = Write-CommandInfo $_
+        }
 
         ## Platform specific, Win32
         if ([System.Environment]::OSVersion.Platform -eq 'Win32NT')
@@ -194,7 +207,9 @@ $originalCommand = New-CommandWrapper Out-Default -Process {
         }
     }
     catch {
-        Write-Host $_.Exception.Message + ' ' + $_.InvocationInfo.ScriptLineNumber
+        Write-Error -Exception $_.Exception
+
+        $handled = $false
     }
     
     if ($handled)
