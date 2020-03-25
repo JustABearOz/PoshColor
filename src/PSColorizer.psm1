@@ -132,6 +132,10 @@ $import = Join-Path $PSScriptRoot "Renderers"
 $import = Join-Path $import "CommandInfoRenderer.ps1"
 . $import
 
+$import = Join-Path $PSScriptRoot "Renderers"
+$import = Join-Path $import "MemberDefinitionRenderer.ps1"
+. $import
+
 # if no theme has been set, set the default
 $theme = Get-ColorizerTheme
 
@@ -174,6 +178,10 @@ $originalCommand = New-CommandWrapper Out-Default -Process {
             $_ -is [System.Management.Automation.ScriptInfo] -or
             $_ -is [System.Management.Automation.AliasInfo]) {
             $handled = Write-CommandInfo $_
+        }
+        elseif($_ -is [Microsoft.PowerShell.Commands.MemberDefinition])
+        {
+            $handled = Write-MemberDefinition $_
         }
 
         ## Platform specific, Win32, not available in all version of powershell

@@ -65,4 +65,24 @@ $global:PSColorizer = @{
         RemoteCommand = @{Color = '#909090'}
         ExternalScript = @{Color = '#00bb00'}
     }
+    PSMemberType = @{
+        Default = @{Color = '#dddddd'}
+
+        Property = @{Color = '#55aa55'}
+        PropertySet = @{Color = '#008800'}
+        Properties = @{Color = '#00aa00'}
+        AliasProperty = @{Color = '#00cc00'}
+        CodeProperty = @{Color = '#00ee00'}
+        ParameterizedProperty = @{Color = '#22ff22'}
+        ScriptProperty = @{Color = '#66ff66'}
+        InferredProperty = @{Color = '#88ff55'}
+        Event = @{Color = '#dddddd'}
+        MemberSet = @{Color = '#909090'}
+        NoteProperty = @{Color = '#00f1f1'}
+        Method = @{Color = '#0055ff'}
+        Methods = @{Color = '#0000dd'}
+        ScriptMethod = @{Color = '#0000ff'}
+        CodeMethod = @{Color = '#0055aa'}
+        Dynamic = @{Color = '#5555aa'}
+    }
 }
