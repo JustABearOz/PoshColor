@@ -96,6 +96,9 @@ $OnRemoveScript = {
     }   
 }
 
+# Needed in old powershell
+Add-Type -Assembly System.Drawing
+
 # Import helpers
 $import = Join-Path $PSScriptRoot "New-CommandWrapper.ps1"
 . $import
