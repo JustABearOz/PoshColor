@@ -6,6 +6,26 @@ function Write-FileHeader
     if($item -is [System.IO.DirectoryInfo])
     {
         $itemPath = $item.Parent.ToString()
+        
+        # GetRootedPath will cause an exception if $itemPath is a root directory
+        try
+        {
+            # If running on .net framework, the above statement returns a relative path
+            # remove the item name from the full name to get the full parent path
+            if ([System.IO.Path]::GetPathRoot($itemPath) -eq "" )
+            {
+                $replaceName = $item.Name;
+                $replaceName = "\" + $replaceName
+
+                $itemPath = $item.FullName.Replace($replaceName, "" )
+            }
+        }   
+        catch
+        {
+            $replaceName = $item.Name;
+
+            $itemPath = $item.FullName.Replace($replaceName, "" )
+        }
     }
     else
     {

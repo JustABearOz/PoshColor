@@ -54,4 +54,14 @@ $global:PSColorizer = @{
         LowSpace = @{Color = '#FF0000'}
         LowSpacePercent = @{Value = 20}
     }
+    CommandInfo = @{
+        Default = @{Color = '#cccccc'}
+        Alias = @{Color = '#00bb00'}
+        Script = @{Color = '#00aadd'}
+        Function = @{Color = '#dddd00'}
+        CommandLet = @{Color = '#bb00bb'}
+        Application = @{Color = '#cccccc'}
+        RemoteCommand = @{Color = '#505050'}
+        ExternalScript = @{Color = '#006600'}
+    }
 }

@@ -1,6 +1,5 @@
-function Get-ColorizerThemes
-{
-     <#
+function Get-ColorizerThemes {
+    <#
         .SYNOPSIS
             Retrieves a list of all installed colorizer themes
 
@@ -14,23 +13,20 @@ function Get-ColorizerThemes
     get-childitem $themePath | foreach-object { Write-Host $_.Name.Replace(".ps1", "") }
 }
 
-function Get-ColorizerTheme
-{
-     <#
+function Get-ColorizerTheme {
+    <#
         .SYNOPSIS
             Retrieves the name of the currently set theme
 
         .EXAMPLE
             Get-ColorizerTheme
     #>
-    if ($IsWindows)
-    {
+    if ($IsWindows) {
         $themeName = [System.Environment]::GetEnvironmentVariable("PSColorizerTheme", [System.EnvironmentVariableTarget]::User)
     }
     else {
         # Read from a user config file
-        if (Test-Path "~/PSColorizer.config")
-        {
+        if (Test-Path "~/PSColorizer.config") {
             $themeName = Get-Content ~/PSColorizer.config
         }
     }
@@ -38,9 +34,8 @@ function Get-ColorizerTheme
     return $themeName
 }
 
-function Set-ColorizerTheme
-{
-     <#
+function Set-ColorizerTheme {
+    <#
         .SYNOPSIS
             Sets the current Colorizer theme
 
@@ -49,33 +44,28 @@ function Set-ColorizerTheme
     #>
     param (
         # Name of the theme to set
-        [Parameter(Position=0)][string] $ThemeName, 
+        [Parameter(Position = 0)][string] $ThemeName, 
 
         # Use to import the theme, making it the currently loaded theme
         [switch] $Import
-        )
+    )
 
-        if ($IsWindows)
-    {
+    if ($IsWindows) {
         [System.Environment]::SetEnvironmentVariable("PSColorizerTheme", $ThemeName, [System.EnvironmentVariableTarget]::User)
     }
-    else
-    {
+    else {
         Set-Content "~/PSColorizer.config" $ThemeName
     }
 
-    if ($Import)
-    {
+    if ($Import) {
         Import-ColorizerTheme
     }
 }
 
-function Import-ColorizerTheme
-{
+function Import-ColorizerTheme {
     $themeName = Get-ColorizerTheme
 
-    if (!($themeName))
-    {
+    if (!($themeName)) {
         $themeName = "Default"
     }
 
@@ -92,8 +82,7 @@ $OnRemoveScript = {
     #Name of the command
     $commandName = $originalCommand.Command.Name
 
-    if ((Test-Path function:\GLOBAL:$commandName) -and $originalCommand.CommandType -eq "Function" )
-    {
+    if ((Test-Path function:\GLOBAL:$commandName) -and $originalCommand.CommandType -eq "Function" ) {
         # Remove the wrapper command
         Remove-Item function:\Out-Default
 
@@ -102,11 +91,13 @@ $OnRemoveScript = {
     }
 
     # If the original command is no longer public, make it public
-    if ($originalCommand.Command.Visibility -ne "public")
-    {
+    if ($originalCommand.Command.Visibility -ne "public") {
         $originalCommand.Command.Visibility = "Public"
     }   
 }
+
+# Needed in old powershell
+Add-Type -Assembly System.Drawing
 
 # Import helpers
 $import = Join-Path $PSScriptRoot "New-CommandWrapper.ps1"
@@ -115,6 +106,7 @@ $import = Join-Path $PSScriptRoot "New-CommandWrapper.ps1"
 $import = Join-Path $PSScriptRoot "PSColorizerFunctions.ps1"
 . $import
 
+#Import-Renderer -RendererFileName "ServiceControllerRenderer.ps1"
 $import = Join-Path $PSScriptRoot "Renderers"
 $import = Join-Path $import "ServiceControllerRenderer.ps1"
 . $import
@@ -139,12 +131,18 @@ $import = Join-Path $PSScriptRoot "Renderers"
 $import = Join-Path $import "PSDriveInfoRenderer.ps1"
 . $import
 
+$import = Join-Path $PSScriptRoot "Renderers"
+$import = Join-Path $import "CommandInfoRenderer.ps1"
+. $import
+
+$import = Join-Path $PSScriptRoot "Renderers"
+$import = Join-Path $import "MemberDefinitionRenderer.ps1"
+. $import
 
 # if no theme has been set, set the default
 $theme = Get-ColorizerTheme
 
-if (!$theme)
-{
+if (!$theme) {
     Set-ColorizerTheme 'Default'
 }
 
@@ -159,46 +157,57 @@ $ExecutionContext.SessionState.Module.OnRemove += $OnRemoveScript
 ## Wrap the out-default current command/function
 $originalCommand = New-CommandWrapper Out-Default -Process {
 
-    $handled = $false
-
     try {
         
-        if(($_ -is [System.IO.DirectoryInfo]) -or ($_ -is [System.IO.FileInfo]))
-        {
+        $handled = $false
+
+        if (($_ -is [System.IO.DirectoryInfo]) -or ($_ -is [System.IO.FileInfo])) {
             $handled = Write-File $_
         }
-        elseif($_ -is [Microsoft.Powershell.Commands.MatchInfo])
-        {
+        elseif ($_ -is [Microsoft.Powershell.Commands.MatchInfo]) {
             $handled = Write-Match $_
         }
-        elseif($_ -is [System.Management.Automation.PSModuleInfo])
-        {
+        elseif ($_ -is [System.Management.Automation.PSModuleInfo]) {
             $handled = Write-Module $_
         }
-        elseif($_ -is [System.Management.Automation.PSDriveInfo])
-        {
+        elseif ($_ -is [System.Management.Automation.PSDriveInfo]) {
             $handled = Write-PSDrive $_
         }
-
-        ## Platform specific, Win32
-        if ([System.Environment]::OSVersion.Platform -eq 'Win32NT')
+        elseif ($_ -is [System.Management.Automation.ApplicationInfo] -or 
+            $_ -is [System.Management.Automation.CmdletInfo] -or 
+            $_ -is [System.Management.Automation.ExternalScriptInfo] -or 
+            $_ -is [System.Management.Automation.FunctionInfo] -or 
+            $_ -is [System.Management.Automation.RemoteCommandInfo] -or 
+            $_ -is [System.Management.Automation.ScriptInfo] -or
+            $_ -is [System.Management.Automation.AliasInfo]) {
+            $handled = Write-CommandInfo $_
+        }
+        elseif($_ -is [Microsoft.PowerShell.Commands.MemberDefinition])
         {
-            if($_ -is [System.Diagnostics.Eventing.Reader.EventLogRecord])
-            {
-                $handled = Write-EventLog $_
+            $handled = Write-MemberDefinition $_
+        }
+
+        ## Platform specific, Win32, not available in all version of powershell
+        if ([System.Environment]::OSVersion.Platform -eq 'Win32NT') {
+            try {
+            
+                if ($_ -is [System.Diagnostics.Eventing.Reader.EventLogRecord]) {
+                    $handled = Write-EventLog $_
+                }
+                elseif ($_ -is [System.ServiceProcess.ServiceController]) {
+                    $handled = Write_Service $_
+                }
             }
-            elseif($_ -is [System.ServiceProcess.ServiceController])
-            {
-                $handled = Write_Service $_
+            catch {
+            
             }
         }
     }
     catch {
-        Write-Host $_.Exception.Message + ' ' + $_.InvocationInfo.ScriptLineNumber
+        Write-Host $_.Exception.Message -ForegroundColor Red
     }
-    
-    if ($handled)
-    {
+
+    if ($handled) {
         $_ = $null
     }
 } -end {
