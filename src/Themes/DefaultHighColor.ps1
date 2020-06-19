@@ -29,7 +29,7 @@ $global:PSColorizer = @{
     }
     Module = @{
         Binary = @{Color = '#dddddd'}
-        Cim = @{Color = '#00aadd'}
+        Cim = @{Color = '#00FFFF'}
         Manifest = @{Color = '#00FF00'}
         Script = @{Color = '#FFFF00'}
         Workflow = @{Color = '#FF00FF'}
@@ -42,26 +42,26 @@ $global:PSColorizer = @{
         Default = @{Color = '#FFFFFF'}
     }
     PSDriveInfo = @{
-        Alias = @{Color = '#C0C0C0'}
+        Alias = @{Color = '#808080'}
         FileSystem = @{Color = '#00FF00'}
-        Certificate = @{Color = '#C0C0C0'}
+        Certificate = @{Color = '#00C0C0'}
         Environment = @{Color = '#C0C0C0'}
         Function = @{Color = '#FFFF00'}
-        Registry = @{Color = '#008000'}
+        Registry = @{Color = '#808000'}
         Variable = @{Color = '#FF00FF'}
-        WSMan = @{Color = '#C0C0C0'}
+        WSMan = @{Color = '#0000FF'}
         Default = @{Color = '#FFFFFF'}
         LowSpace = @{Color = '#FF0000'}
         LowSpacePercent = @{Value = 20}
     }
     CommandInfo = @{
-        Default = @{Color = '#cccccc'}
-        Alias = @{Color = '#00bb00'}
-        Script = @{Color = '#00aadd'}
-        Function = @{Color = '#dddd00'}
-        CommandLet = @{Color = '#bb00bb'}
-        Application = @{Color = '#cccccc'}
-        RemoteCommand = @{Color = '#505050'}
-        ExternalScript = @{Color = '#006600'}
+        Default = @{Color = '#FFFFFF'}
+        Alias = @{Color = '#00FF00'}
+        Script = @{Color = '#00FFFF'}
+        Function = @{Color = '#FFFF00'}
+        CommandLet = @{Color = '#FF00FF'}
+        Application = @{Color = '#C0C0C0'}
+        RemoteCommand = @{Color = '#808080'}
+        ExternalScript = @{Color = '#008000'}
     }
 }

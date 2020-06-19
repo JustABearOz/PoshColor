@@ -44,21 +44,21 @@ $global:PSColorizer = @{
     PSDriveInfo = @{
         Alias = @{Color = 'DarkGray'}
         FileSystem = @{Color = 'Green'}
-        Certificate = @{Color = 'DarkGray'}
-        Environment = @{Color = 'DarkGray'}
-        Function = @{Color = 'Blue'}
+        Certificate = @{Color = 'DarkCyan'}
+        Environment = @{Color = 'Gray'}
+        Function = @{Color = 'DarkYellow'}
         Registry = @{Color = 'DarkBlue'}
         Variable = @{Color = 'Cyan'}
-        WSMan = @{Color = 'DarkGray'}
-        Default = @{Color = 'Gray'}
+        WSMan = @{Color = 'Blue'}
+        Default = @{Color = 'White'}
         LowSpace = @{Color = 'Red'}
         LowSpacePercent = @{Value = 20}
     }
     CommandInfo = @{
-        Default = @{Color = 'Gray'}
-        Alias = @{Color = 'Blue'}
+        Default = @{Color = 'White'}
+        Alias = @{Color = 'Green'}
         Script = @{Color = 'DarkBlue'}
-        Function = @{Color = 'Green'}
+        Function = @{Color = 'Yellow'}
         CommandLet = @{Color = 'Cyan'}
         Application = @{Color = 'Gray'}
         RemoteCommand = @{Color = 'DarkGray'}
