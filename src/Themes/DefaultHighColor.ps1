@@ -1,57 +1,57 @@
 $global:PSColorizer = @{
     UseConsoleColors = $false
-    DirectoryForeground = '#00bb00'
+    DirectoryForeground = '#00FF00'
     File = [ordered]@{
-        HiddenDirectory = @{ Color = '#505050'; Hidden = $true; Directory = $true; BackgroundColor = '#dddddd' } 
-        CompressedDirectory = @{ Color = '#881010'; Compressed =  $true}
-        Hidden     = @{ Color = '#505050'; Hidden = $true } 
-        IgnoreFiles= @{ Color = '#909090'; Pattern = '^\.' }
-        Code       = @{ Color = '#aa11aa'; Pattern = '\.(java|c|cpp|cs|js|css|html)$' }
-        Executable = @{ Color = '#11cc11'; Pattern = '\.(exe|bat|cmd|py|pl|ps1|psm1|vbs|rb|reg|ps1|sh)$' }
-        Text       = @{ Color = '#dddd00'; Pattern = '\.(txt|cfg|conf|ini|csv|log|config|xml|yml|md|markdown)$' }
-        Compressed = @{ Color = '#bb00bb'; Pattern = '\.(zip|tar|gz|rar|jar|war)$' }
-        Directory  = @{ Color = '#00aadd'; Directory = $true}
-        System     = @{ Color = '#006600'; System = $true}
-        Default    = @{ Color = '#dddddd' }
+        HiddenDirectory = @{ Color = '#000080'; Hidden = $true; Directory = $true; BackgroundColor = '#FFFFFF' } 
+        CompressedDirectory = @{ Color = '#0000FF'; Compressed =  $true}
+        Hidden     = @{ Color = '#808080'; Hidden = $true } 
+        IgnoreFiles= @{ Color = '#C0C0C0'; Pattern = '^\.' }
+        Code       = @{ Color = '#808000'; Pattern = '\.(java|c|cpp|cs|js|css|html|vb)$' }
+        Executable = @{ Color = '#FF0000'; Pattern = '\.(exe|bat|cmd|py|pl|ps1|psm1|vbs|rb|reg|ps1|sh)$' }
+        Text       = @{ Color = '#FFFF00'; Pattern = '\.(txt|cfg|conf|ini|csv|log|config|xml|yml|md|markdown)$' }
+        Compressed = @{ Color = '#00FF00'; Pattern = '\.(zip|tar|gz|rar|jar|war)$' }
+        Directory  = @{ Color = '#00FFFF'; Directory = $true}
+        System     = @{ Color = '#FF00FF'; System = $true}
+        Default    = @{ Color = '#FFFFFF' }
     }
     Service = @{
-        Running = @{ Color = "#00bb00"}
-        Stopped = @{ Color = "#dd0000"}
-        Default = @{ Color = "#505050"}
-        Properties = @{ Color = '#dddddd'}
+        Running = @{ Color = "#00FF00"}
+        Stopped = @{ Color = "#FF0000"}
+        Default = @{ Color = "#C0C0C0"}
+        Properties = @{ Color = '#FFFFFF'}
     }
     Match = @{
-        Default = @{Color = '#cccccc'}
-        MatchText = @{ Color = '#00aadd'}
-        Match = @{Color = '#dddddd'}
-        LineNumber = @{Color = '#ff0000'}
-        File = @{Color = '#00bb00'}
+        Default = @{Color = '#C0C0C0'}
+        MatchText = @{ Color = '#00FFFF'}
+        Match = @{Color = '#FFFFFF'}
+        LineNumber = @{Color = '#FF0000'}
+        File = @{Color = '#00FF00'}
     }
     Module = @{
         Binary = @{Color = '#dddddd'}
         Cim = @{Color = '#00aadd'}
-        Manifest = @{Color = '#11cc11'}
-        Script = @{Color = '#dddd00'}
-        Workflow = @{Color = '#bb00bb'}
+        Manifest = @{Color = '#00FF00'}
+        Script = @{Color = '#FFFF00'}
+        Workflow = @{Color = '#FF00FF'}
     }
     EventLog = @{
-        Critical = @{Color = '#aa11aa'}
-        Error  = @{Color = '#dd0000'}
-        Warning = @{Color = '#dddd00'}
-        Information = @{Color = '#cccccc'}
-        Default = @{Color = '#dddddd'}
+        Critical = @{Color = '#FF00FF'}
+        Error  = @{Color = '#FF0000'}
+        Warning = @{Color = '#FFFF00'}
+        Information = @{Color = '#C0C0C0'}
+        Default = @{Color = '#FFFFFF'}
     }
     PSDriveInfo = @{
-        Alias = @{Color = '#505050'}
-        FileSystem = @{Color = '#00bb00'}
-        Certificate = @{Color = '#505050'}
-        Environment = @{Color = '#505050'}
-        Function = @{Color = '#dddd00'}
-        Registry = @{Color = '#006600'}
-        Variable = @{Color = '#bb00bb'}
-        WSMan = @{Color = '#505050'}
-        Default = @{Color = '#cccccc'}
-        LowSpace = @{Color = '#dd0000'}
+        Alias = @{Color = '#C0C0C0'}
+        FileSystem = @{Color = '#00FF00'}
+        Certificate = @{Color = '#C0C0C0'}
+        Environment = @{Color = '#C0C0C0'}
+        Function = @{Color = '#FFFF00'}
+        Registry = @{Color = '#008000'}
+        Variable = @{Color = '#FF00FF'}
+        WSMan = @{Color = '#C0C0C0'}
+        Default = @{Color = '#FFFFFF'}
+        LowSpace = @{Color = '#FF0000'}
         LowSpacePercent = @{Value = 20}
     }
 }

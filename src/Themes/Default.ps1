@@ -2,16 +2,16 @@ $global:PSColorizer = @{
     UseConsoleColors = $true
     DirectoryForeground = 'Green'
     File = [ordered]@{
-        HiddenDirectory = @{ Color = 'DarkGray'; Hidden = $true; Directory = $true; BackgroundColor = 'White' } 
-        CompressedDirectory = @{ Color = 'DarkRed'; Compressed =  $true}
+        HiddenDirectory = @{ Color = 'DarkBlue'; Hidden = $true; Directory = $true; BackgroundColor = 'White' } 
+        CompressedDirectory = @{ Color = 'Blue'; Compressed =  $true}
         Hidden     = @{ Color = 'DarkGray'; Hidden = $true } 
         IgnoreFiles= @{ Color = 'Gray'; Pattern = '^\.' }
-        Code       = @{ Color = 'Magenta'; Pattern = '\.(java|c|cpp|cs|js|css|html)$' }
-        Executable = @{ Color = 'Green'; Pattern = '\.(exe|bat|cmd|py|pl|ps1|psm1|vbs|rb|reg|ps1|sh)$' }
+        Code       = @{ Color = 'DarkYellow'; Pattern = '\.(java|c|cpp|cs|js|css|html|vb)$' }
+        Executable = @{ Color = 'Red'; Pattern = '\.(exe|bat|cmd|py|pl|ps1|psm1|vbs|rb|reg|ps1|sh)$' }
         Text       = @{ Color = 'Yellow'; Pattern = '\.(txt|cfg|conf|ini|csv|log|config|xml|yml|md|markdown)$' }
-        Compressed = @{ Color = 'Red'; Pattern = '\.(zip|tar|gz|rar|jar|war)$' }
+        Compressed = @{ Color = 'Green'; Pattern = '\.(zip|tar|gz|rar|jar|war)$' }
         Directory  = @{ Color = 'Cyan'; Directory = $true}
-        System     = @{ Color = 'DarkGreen'; System = $true}
+        System     = @{ Color = 'Magenta'; System = $true}
         Default    = @{ Color = 'White' }
     }
     Service = @{
