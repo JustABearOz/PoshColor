@@ -17,24 +17,24 @@ function Write-EventLog
 
     Write-ServiceHeader
 
-    $foreground = $global:PSColorizer.EventLog.Default.Color    
+    $foreground = $global:PoshColor.EventLog.Default.Color    
 
     if ($item.Level -eq 1)
     {
         # Critical
-        $foreground = $global:PSColorizer.EventLog.Critical.Color
+        $foreground = $global:PoshColor.EventLog.Critical.Color
     }
     elseif ($item.Level -eq 2)
     {
-        $foreground = $global:PSColorizer.EventLog.Error.Color
+        $foreground = $global:PoshColor.EventLog.Error.Color
     }
     elseif ($item.Level -eq 3)
     {
-        $foreground = $global:PSColorizer.EventLog.Warning.Color
+        $foreground = $global:PoshColor.EventLog.Warning.Color
     }
     elseif ($item.Level -eq 4)
     {
-        $foreground = $global:PSColorizer.EventLog.Information.Color
+        $foreground = $global:PoshColor.EventLog.Information.Color
     }
 
     $providerName = $item.ProviderName.ToString()
