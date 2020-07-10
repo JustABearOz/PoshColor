@@ -50,6 +50,12 @@ There are currently 3 themes that come with PoshColor. Feel free to contribute m
 |Get-PoshColorThemes|Gets a list of all installed PoshColor themes|
 
 ## Installation
+### PowershellGallery
+```powershell
+Install-Module PoshColor
+
+Import-Module PoshColor
+```
 ### Install from source
 ```powershell
 git clone https://github.com/JustABearOz/PoshColor.git
