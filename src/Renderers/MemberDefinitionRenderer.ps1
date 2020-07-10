@@ -41,71 +41,71 @@ function Write-MemberDefinition
 
     $output = [System.String]::Format("{0, -27}{1, -16}{2}", $item.Name, $item.MemberType, $definition)
 
-    $foreground = $global:PSColorizer.CommandInfo.Default.Color
+    $foreground = $global:PoshColor.CommandInfo.Default.Color
 
     if ($item.MemberType -eq [System.Management.Automation.PSMemberTypes]::CodeMethod)
     {
-        $foreground = $global:PSColorizer.PSMemberType.CodeMethod.Color
+        $foreground = $global:PoshColor.PSMemberType.CodeMethod.Color
     }
     elseif ($item.MemberType -eq [System.Management.Automation.PSMemberTypes]::AliasProperty)
     {
-        $foreground = $global:PSColorizer.PSMemberType.AliasProperty.Color
+        $foreground = $global:PoshColor.PSMemberType.AliasProperty.Color
     }
     elseif ($item.MemberType -eq [System.Management.Automation.PSMemberTypes]::CodeProperty)
     {
-        $foreground = $global:PSColorizer.PSMemberType.CodeProperty.Color
+        $foreground = $global:PoshColor.PSMemberType.CodeProperty.Color
     }
     elseif ($item.MemberType -eq [System.Management.Automation.PSMemberTypes]::Method)
     {
-        $foreground = $global:PSColorizer.PSMemberType.Method.Color
+        $foreground = $global:PoshColor.PSMemberType.Method.Color
     }
     elseif ($item.MemberType -eq [System.Management.Automation.PSMemberTypes]::Methods)
     {
-        $foreground = $global:PSColorizer.PSMemberType.Methods.Color
+        $foreground = $global:PoshColor.PSMemberType.Methods.Color
     }
     elseif ($item.MemberType -eq [System.Management.Automation.PSMemberTypes]::NoteProperty)
     {
-        $foreground = $global:PSColorizer.PSMemberType.NoteProperty.Color
+        $foreground = $global:PoshColor.PSMemberType.NoteProperty.Color
     }
     elseif ($item.MemberType -eq [System.Management.Automation.PSMemberTypes]::ParameterizedProperty)
     {
-        $foreground = $global:PSColorizer.PSMemberType.ParameterizedProperty.Color
+        $foreground = $global:PoshColor.PSMemberType.ParameterizedProperty.Color
     }
     elseif ($item.MemberType -eq [System.Management.Automation.PSMemberTypes]::Properties)
     {
-        $foreground = $global:PSColorizer.PSMemberType.Properties.Color
+        $foreground = $global:PoshColor.PSMemberType.Properties.Color
     }
     elseif ($item.MemberType -eq [System.Management.Automation.PSMemberTypes]::Property)
     {
-        $foreground = $global:PSColorizer.PSMemberType.Property.Color
+        $foreground = $global:PoshColor.PSMemberType.Property.Color
     }
     elseif ($item.MemberType -eq [System.Management.Automation.PSMemberTypes]::PropertySet)
     {
-        $foreground = $global:PSColorizer.PSMemberType.PropertySet.Color
+        $foreground = $global:PoshColor.PSMemberType.PropertySet.Color
     }
     elseif ($item.MemberType -eq [System.Management.Automation.PSMemberTypes]::ScriptMethod)
     {
-        $foreground = $global:PSColorizer.PSMemberType.ScriptMethod.Color
+        $foreground = $global:PoshColor.PSMemberType.ScriptMethod.Color
     }
     elseif ($item.MemberType -eq [System.Management.Automation.PSMemberTypes]::ScriptProperty)
     {
-        $foreground = $global:PSColorizer.PSMemberType.ScriptProperty.Color
+        $foreground = $global:PoshColor.PSMemberType.ScriptProperty.Color
     }
     elseif ($item.MemberType -eq [System.Management.Automation.PSMemberTypes]::Dynamic)
     {
-        $foreground = $global:PSColorizer.PSMemberType.Dynamic.Color
+        $foreground = $global:PoshColor.PSMemberType.Dynamic.Color
     }
     elseif ($item.MemberType -eq [System.Management.Automation.PSMemberTypes]::Event)
     {
-        $foreground = $global:PSColorizer.PSMemberType.Event.Color
+        $foreground = $global:PoshColor.PSMemberType.Event.Color
     }
     elseif ($item.MemberType -eq [System.Management.Automation.PSMemberTypes]::InferredProperty)
     {
-        $foreground = $global:PSColorizer.PSMemberType.InferredProperty.Color
+        $foreground = $global:PoshColor.PSMemberType.InferredProperty.Color
     }
     elseif ($item.MemberType -eq [System.Management.Automation.PSMemberTypes]::MemberSet)
     {
-        $foreground = $global:PSColorizer.PSMemberType.MemberSet.Color
+        $foreground = $global:PoshColor.PSMemberType.MemberSet.Color
     }
     
     Write-HostColor $output -Foreground $foreground

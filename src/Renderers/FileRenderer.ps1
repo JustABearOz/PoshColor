@@ -38,17 +38,17 @@ function Write-FileHeader
         $script:currentDirectory = $itemPath
 
         # Do we have a foregorund color configured?
-        if ($global:PSColorizer.DirectoryForeground)
+        if ($global:PoshColor.DirectoryForeground)
         {
             Write-Host "Directory: " -NoNewline
 
             # Use console colors?
-            if ($global:PSColorizer.UseConsoleColors)
+            if ($global:PoshColor.UseConsoleColors)
             {
-                Write-Host $script:currentDirectory -ForegroundColor $global:PSColorizer.DirectoryForeground
+                Write-Host $script:currentDirectory -ForegroundColor $global:PoshColor.DirectoryForeground
             }
             else {
-                Write-HostColor $script:currentDirectory $global:PSColorizer.DirectoryForeground
+                Write-HostColor $script:currentDirectory $global:PoshColor.DirectoryForeground
             }
         }
         else {
@@ -82,11 +82,11 @@ function Write-File
         $length = $item.Length
     }
 
-    foreach($filterKey in $global:PSColorizer.File.Keys)
+    foreach($filterKey in $global:PoshColor.File.Keys)
     {
         $match = $true;
 
-        $filter = $global:PSColorizer.File.Item($filterKey)
+        $filter = $global:PoshColor.File.Item($filterKey)
 
         if (($filter.Directory -eq $true) -and $isDirectory -eq $false)
         {

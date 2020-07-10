@@ -16,8 +16,8 @@ function Write_Service
 
     Write-ServiceHeader
 
-    $foreground = $global:PSColorizer.Service.Default.Color
-    $background = $global:PSColorizer.Service.Default.BackgroundColor
+    $foreground = $global:PoshColor.Service.Default.Color
+    $background = $global:PoshColor.Service.Default.BackgroundColor
 
     $name = $item.Name
 
@@ -51,13 +51,13 @@ function Write_Service
 
     if ($status -eq 'Running')
     {
-        $foreground = $global:PSColorizer.Service.Running.Color
-        $background = $global:PSColorizer.Service.Running.BackgroundColor
+        $foreground = $global:PoshColor.Service.Running.Color
+        $background = $global:PoshColor.Service.Running.BackgroundColor
     }
     elseif ($status -eq 'Stopped')
     {
-        $foreground = $global:PSColorizer.Service.Stopped.Color
-        $background = $global:PSColorizer.Service.Stopped.BackgroundColor
+        $foreground = $global:PoshColor.Service.Stopped.Color
+        $background = $global:PoshColor.Service.Stopped.BackgroundColor
     }
 
     if (!$status -or $status -eq "")
@@ -74,7 +74,7 @@ function Write_Service
     $outputText = [String]::Format(" {0, -18} {1, -38} {2, -20}", $trimmedName, $trimmedDisplayName, $startup)
 
     Write-HostColor $statusText -Foreground $foreground -Background $background -noNewLine
-    Write-HostColor $outputText -Foreground $global:PSColorizer.Service.Properties.Color -Background $global:PSColorizer.Service.Properties.BackgroundColor
+    Write-HostColor $outputText -Foreground $global:PoshColor.Service.Properties.Color -Background $global:PoshColor.Service.Properties.BackgroundColor
 
     return $true
 }

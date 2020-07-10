@@ -1,5 +1,5 @@
-# PSColorizer
-PSColorizer is a blatant ripoff of [PSColor](https://github.com/Davlind/PSColor) :relaxed:, allowing you to customise items in powershell based on your own color preferences. PSColorizer works in Powershell Core and works across both Windows and Linux.
+# PoshColor
+PoshColor is a blatant ripoff of [PSColor](https://github.com/Davlind/PSColor) :relaxed:, allowing you to customise items in powershell based on your own color preferences. PoshColor works in Powershell Core and works across both Windows and Linux.
 
 PSColozier can use either standard console colors or 8 bit RGB allowing 16 million colour goodness.
 
@@ -33,7 +33,7 @@ PSColozier can use either standard console colors or 8 bit RGB allowing 16 milli
 ### Get-Command
 ![Screenshot of Get-Command](images/getcommandresult.png)
 ## Themes
-There are currently 3 themes that come with PSColorizer. Feel free to contribute more themes to make PSColorizer the best it can be.
+There are currently 3 themes that come with PoshColor. Feel free to contribute more themes to make PoshColor the best it can be.
 
 ### Included themes
 |Theme Name| Description|
@@ -45,33 +45,33 @@ There are currently 3 themes that come with PSColorizer. Feel free to contribute
 ## Comands
 |Command|Description|
 |---|---|
-|Get-ColorizerTheme|Gets the current theme being used by PSColorizer|
-|Set-ColorizerTheme|Sets the current theme for colorizer to use|
-|Get-ColorizerThemes|Gets a list of all installed colorizer themes|
+|Get-PoshColorTheme|Gets the current theme being used by PoshColor|
+|Set-PoshColorTheme|Sets the current theme for PoshColor to use|
+|Get-PoshColorThemes|Gets a list of all installed PoshColor themes|
 
 ## Installation
 ### Install from source
 ```powershell
-git clone https://github.com/JustABearOz/PSColorizer.git
+git clone https://github.com/JustABearOz/PoshColor.git
 
-sl .\PSColorizer
+sl .\PoshColor
 
 .\Install.ps1
 ```
 
 ### Install from Zip
-Download the latest [release](https://github.com/JustABearOz/PSColorizer/releases) and extract it into your powershell modules directory. 
+Download the latest [release](https://github.com/JustABearOz/PoshColor/releases) and extract it into your powershell modules directory. 
 
 ### Add to Profile
-The above installation methods will load the PSColorizer module for your current session. If you want the PSColorizer module loaded for all sessions, add the following line to your profile
+The above installation methods will load the PoshColor module for your current session. If you want the PoshColor module loaded for all sessions, add the following line to your profile
 ```pwsh
-Import-Module PSColorizer
+Import-Module PoshColor
 ```
 
-### Unload PSColorizer
-To unload PSColorizer from your session, run the following command in powershell
+### Unload PoshColor
+To unload PoshColor from your session, run the following command in powershell
 ```pwsh
-Remove-Module PSColorizer
+Remove-Module PoshColor
 ```
 
 ### Themes

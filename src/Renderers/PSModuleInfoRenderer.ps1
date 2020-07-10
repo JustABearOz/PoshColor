@@ -18,22 +18,22 @@ function Write-Module
     Write-ServiceHeader
 
 
-    $foreground = $global:PSColorizer.Module.Default.Color    
+    $foreground = $global:PoshColor.Module.Default.Color    
 
     if ($item.ModuleType.ToString() -eq 'Binary') {
-        $foreground = $global:PSColorizer.Module.Binary.Color
+        $foreground = $global:PoshColor.Module.Binary.Color
     }
     elseif($item.ModuleType.ToString() -eq 'Cim') {
-        $foreground =  $global:PSColorizer.Module.Cim.Color
+        $foreground =  $global:PoshColor.Module.Cim.Color
     }
     elseif($item.ModuleType.ToString() -eq 'Manifest') {
-        $foreground =  $global:PSColorizer.Module.Manifest.Color
+        $foreground =  $global:PoshColor.Module.Manifest.Color
     }
     elseif($item.ModuleType.ToString() -eq 'Script') {
-        $foreground =  $global:PSColorizer.Module.Script.Color
+        $foreground =  $global:PoshColor.Module.Script.Color
     }
     elseif($item.ModuleType.ToString() -eq 'Workflow') {
-        $foreground =  $global:PSColorizer.Module.Workflow.Colorz
+        $foreground =  $global:PoshColor.Module.Workflow.Colorz
     }
 
     $info = [String]::Format("{0,-10} {1, -10} {2, -36}", $item.ModuleType, $item.Version, $item.Name)

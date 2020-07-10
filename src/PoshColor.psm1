@@ -1,10 +1,10 @@
-function Get-ColorizerThemes {
+function Get-PoshColorThemes {
     <#
         .SYNOPSIS
-            Retrieves a list of all installed colorizer themes
+            Retrieves a list of all installed PoshColor themes
 
         .EXAMPLE
-            Get-ColorizerThemes
+            Get-PoshColorThemes
     #>
     $themePath = Join-Path $PSScriptRoot "Themes"
 
@@ -13,35 +13,35 @@ function Get-ColorizerThemes {
     get-childitem $themePath | foreach-object { Write-Output $_.Name.Replace(".ps1", "") }
 }
 
-function Get-ColorizerTheme {
+function Get-PoshColorTheme {
     <#
         .SYNOPSIS
             Retrieves the name of the currently set theme
 
         .EXAMPLE
-            Get-ColorizerTheme
+            Get-PoshColorTheme
     #>
     if ($IsWindows) {
-        $themeName = [System.Environment]::GetEnvironmentVariable("PSColorizerTheme", [System.EnvironmentVariableTarget]::User)
+        $themeName = [System.Environment]::GetEnvironmentVariable("PoshColorTheme", [System.EnvironmentVariableTarget]::User)
     }
     else {
         # Read from a user config file
-        if (Test-Path "~/PSColorizer.config") {
-            $themeName = Get-Content ~/PSColorizer.config
+        if (Test-Path "~/PoshColor.config") {
+            $themeName = Get-Content ~/PoshColor.config
         }
     }
 
     return $themeName
 }
 
-function Set-ColorizerTheme {
+function Set-PoshColorTheme {
     [CmdletBinding(SupportsShouldProcess)]
     <#
         .SYNOPSIS
-            Sets the current Colorizer theme
+            Sets the current PoshColor theme
 
         .EXAMPLE
-            Set-ColorizerTheme Default
+            Set-PoshColorTheme Default
     #>
     param (
         # Name of the theme to set
@@ -52,19 +52,19 @@ function Set-ColorizerTheme {
     )
 
     if ($IsWindows) {
-        [System.Environment]::SetEnvironmentVariable("PSColorizerTheme", $ThemeName, [System.EnvironmentVariableTarget]::User)
+        [System.Environment]::SetEnvironmentVariable("PoshColorTheme", $ThemeName, [System.EnvironmentVariableTarget]::User)
     }
     else {
-        Set-Content "~/PSColorizer.config" $ThemeName
+        Set-Content "~/PoshColor.config" $ThemeName
     }
 
     if ($Import) {
-        Import-ColorizerTheme
+        Import-PoshColorTheme
     }
 }
 
-function Import-ColorizerTheme {
-    $themeName = Get-ColorizerTheme
+function Import-PoshColorTheme {
+    $themeName = Get-PoshColorTheme
 
     if (!($themeName)) {
         $themeName = "Default"
@@ -104,7 +104,7 @@ Add-Type -Assembly System.Drawing
 $import = Join-Path $PSScriptRoot "New-CommandWrapper.ps1"
 . $import
 
-$import = Join-Path $PSScriptRoot "PSColorizerFunctions.ps1"
+$import = Join-Path $PSScriptRoot "PoshColorFunctions.ps1"
 . $import
 
 #Import-Renderer -RendererFileName "ServiceControllerRenderer.ps1"
@@ -141,13 +141,13 @@ $import = Join-Path $import "MemberDefinitionRenderer.ps1"
 . $import
 
 # if no theme has been set, set the default
-$theme = Get-ColorizerTheme
+$theme = Get-PoshColorTheme
 
 if (!$theme) {
-    Set-ColorizerTheme 'Default'
+    Set-PoshColorTheme 'Default'
 }
 
-Import-ColorizerTheme
+Import-PoshColorTheme
 
 ## No starting directory, this is used to detect changes in directories during file listings
 $script:currentDirectory = ""

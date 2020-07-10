@@ -1,4 +1,4 @@
-$global:PSColorizer = @{
+$global:PoshColor = @{
     UseConsoleColors = $true
     DirectoryForeground = 'Green'
     File = [ordered]@{

@@ -6,15 +6,15 @@ function Write-MatchContext
 
     if ($printFile)
     {
-        Write-HostColor " $relativePath" $global:PSColorizer.Match.File.Color -Background $global:PSColorizer.Match.File.BackgroundColor
+        Write-HostColor " $relativePath" $global:PoshColor.Match.File.Color -Background $global:PoshColor.Match.File.BackgroundColor
     }
 
     $currentLineNumber = $lineNumber
 
     $context | ForEach-Object {
-        Write-HostColor "   Line: " -Foreground $global:PSColorizer.Match.Default.Color -Background $global:PSColorizer.Match.Default.BackgroundColor -NoNewline
-        Write-HostColor (Pad $currentLineNumber 6) -Foreground $global:PSColorizer.Match.LineNumber.Color -Background $global:PSColorizer.Match.LineNumber.BackgroundColor -NoNewline
-        Write-HostColor "$_" -Foreground $global:PSColorizer.Match.Match.Color -Background $global:PSColorizer.Match.Match.BackgroundColor
+        Write-HostColor "   Line: " -Foreground $global:PoshColor.Match.Default.Color -Background $global:PoshColor.Match.Default.BackgroundColor -NoNewline
+        Write-HostColor (Pad $currentLineNumber 6) -Foreground $global:PoshColor.Match.LineNumber.Color -Background $global:PoshColor.Match.LineNumber.BackgroundColor -NoNewline
+        Write-HostColor "$_" -Foreground $global:PoshColor.Match.Match.Color -Background $global:PoshColor.Match.Match.BackgroundColor
         $currentLineNumber = $currentLineNumber + 1
     }
 }
@@ -44,15 +44,15 @@ function Write-MatchItem
 
             $items.Insert(0, @{
                 Text = $newTextPart
-                Foreground=$global:PSColorizer.Match.Match.Color
-                Background=$global:PSColorizer.Match.Match.BackgroundColor
+                Foreground=$global:PoshColor.Match.Match.Color
+                Background=$global:PoshColor.Match.Match.BackgroundColor
             })
         }
 
         $items.Insert(0, @{
             Text = $_.Value
-            Foreground=$global:PSColorizer.Match.MatchText.Color
-            Background=$global:PSColorizer.Match.MatchText.BackgroundColor
+            Foreground=$global:PoshColor.Match.MatchText.Color
+            Background=$global:PoshColor.Match.MatchText.BackgroundColor
         })
         
         $itemText = $itemText.Substring(0, $_.Index)
@@ -63,8 +63,8 @@ function Write-MatchItem
     {
         $items.Insert(0, @{
             Text = $itemText
-            Foreground=$global:PSColorizer.Match.Match.Color
-            Background=$global:PSColorizer.Match.Match.BackgroundColor
+            Foreground=$global:PoshColor.Match.Match.Color
+            Background=$global:PoshColor.Match.Match.BackgroundColor
         })
     }
 
@@ -84,17 +84,17 @@ function Write-Match
     {
         Write-MatchContext $item.Context.DisplayPreContext  $item.RelativePath($pwd) ($item.LineNumber - $item.Context.DisplayPreContext.Count) -PrintFile
 
-        Write-HostColor '-> Line: ' -Foreground $global:PSColorizer.Match.Default.Color -Background $global:PSColorizer.Match.Default.BackgroundColor -noNewLine
-        Write-HostColor (Pad $item.LineNumber 6) -Foreground $global:PSColorizer.Match.LineNumber.Color -Background $global:PSColorizer.Match.LineNumber.BackgroundColor -noNewLine
+        Write-HostColor '-> Line: ' -Foreground $global:PoshColor.Match.Default.Color -Background $global:PoshColor.Match.Default.BackgroundColor -noNewLine
+        Write-HostColor (Pad $item.LineNumber 6) -Foreground $global:PoshColor.Match.LineNumber.Color -Background $global:PoshColor.Match.LineNumber.BackgroundColor -noNewLine
         Write-MatchItem $item.Line $item.Matches
 
         Write-MatchContext $item.Context.DisplayPostContext  $item.RelativePath($pwd) ($item.LineNumber + 1)
     }
     else {
-        Write-HostColor '-> Line: ' -Foreground $global:PSColorizer.Match.Default.Color -Background $global:PSColorizer.Match.Default.BackgroundColor -NoNewline
-        Write-HostColor (Pad $item.LineNumber 6) -Foreground $global:PSColorizer.Match.LineNumber.Color -Background $global:PSColorizer.Match.LineNumber.BackgroundColor -noNewLine
-        Write-HostColor $item.RelativePath($pwd) -Foreground $global:PSColorizer.Match.File.Color -Background $global:PSColorizer.Match.File.BackgroundColor -noNewLine
-        Write-HostColor ': ' -Foreground  $global:PSColorizer.Match.Default.Color -Background $global:PSColorizer.Match.Default.BackgroundColor -noNewLine
+        Write-HostColor '-> Line: ' -Foreground $global:PoshColor.Match.Default.Color -Background $global:PoshColor.Match.Default.BackgroundColor -NoNewline
+        Write-HostColor (Pad $item.LineNumber 6) -Foreground $global:PoshColor.Match.LineNumber.Color -Background $global:PoshColor.Match.LineNumber.BackgroundColor -noNewLine
+        Write-HostColor $item.RelativePath($pwd) -Foreground $global:PoshColor.Match.File.Color -Background $global:PoshColor.Match.File.BackgroundColor -noNewLine
+        Write-HostColor ': ' -Foreground  $global:PoshColor.Match.Default.Color -Background $global:PoshColor.Match.Default.BackgroundColor -noNewLine
         Write-MatchItem $item.Line $item.Matches
     }
     return $true;

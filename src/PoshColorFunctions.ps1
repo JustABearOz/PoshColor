@@ -71,7 +71,7 @@ function Write-HostColor
 {
     param ([Parameter(Position=0)] [System.String] $text, [Parameter(Position=1)][System.String] $foreground,  [System.String] $background, [switch] $noNewLine = $false)
 
-    if ($global:PSColorizer.UseConsoleColors)
+    if ($global:PoshColor.UseConsoleColors)
     {
         if ($background)
         {

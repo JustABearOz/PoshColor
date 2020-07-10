@@ -1,22 +1,22 @@
-if ((get-module PSColorizer) -ne $null)
+if ((get-module PoshColor) -ne $null)
 {
     ## Uninstall the existing Version
-    Remove-Module PSColorizer
+    Remove-Module PoshColor
 }
 
 $modulePath = $env:PSModulePath.Split([IO.Path]::PathSeparator)[0]
 
-$modulePath = Join-Path $modulePath "PSColorizer"
+$modulePath = Join-Path $modulePath "PoshColor"
 
 if ((Test-Path $modulePath) -eq $false)
 {
     New-Item $modulePath -Type Directory    
 }
 
-$psColorizerModule = Join-Path . "src"
-$psColorizerModule = Join-Path $psColorizerModule "PSColorizer.psd1"
+$poshColorModule = Join-Path . "src"
+$poshColorModule = Join-Path $poshColorModule "PoshColor.psd1"
 
-$module = (Get-Module $psColorizerModule -ListAvailable)
+$module = (Get-Module $poshColorModule -ListAvailable)
 
 Write-Host $module.Version
 
@@ -41,4 +41,4 @@ $moduleSource = Join-Path $moduleSource "*"
 
 copy-item $moduleSource $modulePath -Recurse -Force
 
-Import-Module PSColorizer
+Import-Module PoshColor

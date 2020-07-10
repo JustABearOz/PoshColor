@@ -16,39 +16,39 @@ function Write-PSDrive
 
     Write-Header
 
-    $foreground = $global:PSColorizer.PSDriveInfo.Default.Color
+    $foreground = $global:PoshColor.PSDriveInfo.Default.Color
 
     if ($item.Provider.Name -eq 'Alias')
     {
-        $foreground = $global:PSColorizer.PSDriveInfo.Alias.Color
+        $foreground = $global:PoshColor.PSDriveInfo.Alias.Color
     }
     elseif ($item.Provider.Name -eq 'FileSystem')
     {
-        $foreground = $global:PSColorizer.PSDriveInfo.FileSystem.Color
+        $foreground = $global:PoshColor.PSDriveInfo.FileSystem.Color
     }
     elseif ($item.Provider.Name -eq 'Certificate')
     {
-        $foreground = $global:PSColorizer.PSDriveInfo.Certificate.Color
+        $foreground = $global:PoshColor.PSDriveInfo.Certificate.Color
     }
     elseif ($item.Provider.Name -eq 'Environment')
     {
-        $foreground = $global:PSColorizer.PSDriveInfo.Environment.Color
+        $foreground = $global:PoshColor.PSDriveInfo.Environment.Color
     }
     elseif ($item.Provider.Name -eq 'Function')
     {
-        $foreground = $global:PSColorizer.PSDriveInfo.Function.Color
+        $foreground = $global:PoshColor.PSDriveInfo.Function.Color
     }
     elseif ($item.Provider.Name -eq 'Registry')
     {
-        $foreground = $global:PSColorizer.PSDriveInfo.Registry.Color
+        $foreground = $global:PoshColor.PSDriveInfo.Registry.Color
     }
     elseif ($item.Provider.Name -eq 'Variable')
     {
-        $foreground = $global:PSColorizer.PSDriveInfo.Variable.Color
+        $foreground = $global:PoshColor.PSDriveInfo.Variable.Color
     }
     elseif ($item.Provider.Name -eq 'WSMan')
     {
-        $foreground = $global:PSColorizer.PSDriveInfo.WSMan.Color
+        $foreground = $global:PoshColor.PSDriveInfo.WSMan.Color
     }
 
     $used = (($item.Used / 1024) / 1024) / 1024
@@ -71,11 +71,11 @@ function Write-PSDrive
     {
         $freePercent = (100 / $totalSize) * $item.Free
 
-        $percentage = $global:PSColorizer.PSDriveInfo.LowSpacePercent.Value
+        $percentage = $global:PoshColor.PSDriveInfo.LowSpacePercent.Value
 
         if ($freePercent -lt $percentage)
         {
-            $freeForeground = $global:PSColorizer.PSDriveInfo.LowSpace.Color
+            $freeForeground = $global:PoshColor.PSDriveInfo.LowSpace.Color
         }
     }
 
