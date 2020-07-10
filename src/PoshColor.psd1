@@ -111,7 +111,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = @('Color')
+        Tags = @('Color', 'Colour', 'File', 'Service', 'Select-String', 'Module', 'Event Log', 'Customisation', 'Customization')
 
         # A URL to the license for this module.
         LicenseUri = 'https://github.com/JustABearOz/PoshColor/blob/master/LICENSE'

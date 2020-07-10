@@ -28,7 +28,7 @@ else
     remove-item $removeItems -recurse -force
 }
 
-$targetfile = Join-Path -Path $target -ChildPath "PSColorizer.zip"
+$targetfile = Join-Path -Path $target -ChildPath "PoshColor.zip"
 
 Write-Host "Creating release package $targetfile" 
 
@@ -43,4 +43,4 @@ else
     Write-Host "One or more errors occured" -ForegroundColor Red
 }
 
-copy-item .\src\ .\release\PSColorizer\ -recurse -container -force
+copy-item .\src\ .\release\PoshColor\ -recurse -container -force
