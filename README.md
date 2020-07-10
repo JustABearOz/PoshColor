@@ -8,11 +8,13 @@ PSColozier can use either standard console colors or 8 bit RGB allowing 16 milli
 * Tested under Windows (powershell and powershell core) and Linux (Ubuntu/bash Ubuntu/powershell core)
 * Support for Background colors
 * Coloring of:
-  * Files, Directories (ls / get-childitem)
-  * Services (get-service)
-  * MatchInfo (select-string)
-  * PSModuleInfo (get-module)
   * EventLogRecord (get-winevent)
+  * Files, Directories (ls / get-childitem)
+  * MatchInfo (select-string)
+  * MemberInfo (get-member)
+  * PSModuleInfo (get-module)
+  * PSDriveInfo (get-psdrive)
+  * Services (get-service)
 * Files & Directories can have rules for coloring including based the following:
   * File Names using regular expressions
   * File Attributes such as directory, hidden, system, encypted or compressed
@@ -25,6 +27,11 @@ PSColozier can use either standard console colors or 8 bit RGB allowing 16 milli
 ### Screenshot of Select String with -Context 1
 ![Screenshot of select-string with context](images/selectstringwithcontextresult.png)
 
+### Screenshot of Get-Service
+![Screenshot of Get-Service](images/getserviceresult.png)
+
+### Get-Command
+![Screenshot of Get-Command](images/getcommandresult.png)
 ## Themes
 There are currently 3 themes that come with PSColorizer. Feel free to contribute more themes to make PSColorizer the best it can be.
 
