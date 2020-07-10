@@ -12,7 +12,7 @@
 RootModule = 'PoshColor.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.0.0.1'
+ModuleVersion = '1.0.1.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -111,7 +111,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = @('Color', 'Colour', 'File', 'Service', 'Select-String', 'Module', 'Event Log', 'Customisation', 'Customization')
+        Tags = @('Color', 'Colour', 'File', 'Service', 'Select-String', 'Module', 'EventLog', 'Customisation', 'Customization')
 
         # A URL to the license for this module.
         LicenseUri = 'https://github.com/JustABearOz/PoshColor/blob/master/LICENSE'
