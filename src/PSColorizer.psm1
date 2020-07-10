@@ -9,8 +9,8 @@ function Get-ColorizerThemes {
     $themePath = Join-Path $PSScriptRoot "Themes"
 
     $themePath = Join-Path $themePath "*.ps1"
-    
-    get-childitem $themePath | foreach-object { Write-Host $_.Name.Replace(".ps1", "") }
+
+    get-childitem $themePath | foreach-object { Write-Output $_.Name.Replace(".ps1", "") }
 }
 
 function Get-ColorizerTheme {
@@ -35,6 +35,7 @@ function Get-ColorizerTheme {
 }
 
 function Set-ColorizerTheme {
+    [CmdletBinding(SupportsShouldProcess)]
     <#
         .SYNOPSIS
             Sets the current Colorizer theme
@@ -44,7 +45,7 @@ function Set-ColorizerTheme {
     #>
     param (
         # Name of the theme to set
-        [Parameter(Position = 0)][string] $ThemeName, 
+        [Parameter(Position = 0)][string] $ThemeName,
 
         # Use to import the theme, making it the currently loaded theme
         [switch] $Import
@@ -93,7 +94,7 @@ $OnRemoveScript = {
     # If the original command is no longer public, make it public
     if ($originalCommand.Command.Visibility -ne "public") {
         $originalCommand.Command.Visibility = "Public"
-    }   
+    }
 }
 
 # Needed in old powershell
@@ -158,7 +159,7 @@ $ExecutionContext.SessionState.Module.OnRemove += $OnRemoveScript
 $originalCommand = New-CommandWrapper Out-Default -Process {
 
     try {
-        
+
         $handled = $false
 
         if (($_ -is [System.IO.DirectoryInfo]) -or ($_ -is [System.IO.FileInfo])) {
@@ -173,11 +174,11 @@ $originalCommand = New-CommandWrapper Out-Default -Process {
         elseif ($_ -is [System.Management.Automation.PSDriveInfo]) {
             $handled = Write-PSDrive $_
         }
-        elseif ($_ -is [System.Management.Automation.ApplicationInfo] -or 
-            $_ -is [System.Management.Automation.CmdletInfo] -or 
-            $_ -is [System.Management.Automation.ExternalScriptInfo] -or 
-            $_ -is [System.Management.Automation.FunctionInfo] -or 
-            $_ -is [System.Management.Automation.RemoteCommandInfo] -or 
+        elseif ($_ -is [System.Management.Automation.ApplicationInfo] -or
+            $_ -is [System.Management.Automation.CmdletInfo] -or
+            $_ -is [System.Management.Automation.ExternalScriptInfo] -or
+            $_ -is [System.Management.Automation.FunctionInfo] -or
+            $_ -is [System.Management.Automation.RemoteCommandInfo] -or
             $_ -is [System.Management.Automation.ScriptInfo] -or
             $_ -is [System.Management.Automation.AliasInfo]) {
             $handled = Write-CommandInfo $_
@@ -190,7 +191,7 @@ $originalCommand = New-CommandWrapper Out-Default -Process {
         ## Platform specific, Win32, not available in all version of powershell
         if ([System.Environment]::OSVersion.Platform -eq 'Win32NT') {
             try {
-            
+
                 if ($_ -is [System.Diagnostics.Eventing.Reader.EventLogRecord]) {
                     $handled = Write-EventLog $_
                 }
@@ -199,18 +200,19 @@ $originalCommand = New-CommandWrapper Out-Default -Process {
                 }
             }
             catch {
-            
+                $handled = $false
             }
         }
     }
     catch {
-        Write-Host $_.Exception.Message -ForegroundColor Red
+        Write-Error $_.Exception.Message
+        $handled = $false
     }
 
     if ($handled) {
         $_ = $null
     }
 } -end {
-    write-host ""
+    write-output ""
     $script:currentDirectory = ""
 }
