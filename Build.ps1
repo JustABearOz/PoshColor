@@ -42,3 +42,5 @@ else
 {
     Write-Host "One or more errors occured" -ForegroundColor Red
 }
+
+copy-item .\src\ .\release\PSColorizer\ -recurse -container -force

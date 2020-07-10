@@ -12,7 +12,7 @@
 RootModule = 'PSColorizer.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.10.0.0'
+ModuleVersion = '1.0.0.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -24,7 +24,7 @@ GUID = '97c49386-da8c-4b3d-aa54-f63bc0a41317'
 Author = 'Eddie de Bear'
 
 # Company or vendor of this module
-CompanyName = 'Unknown'
+#CompanyName = 'Unknown'
 
 # Copyright statement for this module
 Copyright = '(c) Eddie de Bear. All rights reserved.'
@@ -87,7 +87,23 @@ AliasesToExport = @()
 #ModuleList = @(PSColorizer)
 
 # List of all files packaged with this module
-# FileList = @()
+FileList = @(
+    "New-CommandWrapper.ps1",
+    "PSColorizer.psd1",
+    "PSColorizer.psm1",
+    "PSColorizerFunctions.ps1",
+    ".\Renderers\CommandInfoRenderer.ps1",
+    ".\Renderers\EventLogRecordRenderer.ps1",
+    ".\Renderers\FileRenderer.ps1",
+    ".\Renderers\MatchInfoRenderer.ps1",
+    ".\Renderers\MemberDefinitionRenderer.ps1",
+    ".\Renderers\PSDriveInfoRenderer.ps1",
+    ".\Renderers\PSModuleInfoRenderer.ps1",
+    ".\Renderers\ServiceControllerRenderer.ps1",
+    ".\Themes\Cool.ps1",
+    ".\Themes\Default.ps1",
+    ".\Themes\DefaultHighColor.ps1"
+)
 
 # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
 PrivateData = @{
