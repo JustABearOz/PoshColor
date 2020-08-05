@@ -83,7 +83,7 @@ Remove-Module PoshColor
 ### Themes
 To view a list of installed themes
 ```powershell
-Get-PsohColorThemes
+Get-PoshColorThemes
 ```
 
 To set the current theme (Setting theme too Cool)
