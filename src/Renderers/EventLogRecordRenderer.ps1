@@ -1,4 +1,4 @@
-function Write-ServiceHeader
+function Write-EventLogHeader
 {
     ## Do we need to write headers?
     if (($script:currentDirectory -eq ""))
@@ -15,7 +15,7 @@ function Write-EventLog
 {
     param ([Parameter(Mandatory=$True,Position=1)] $item)
 
-    Write-ServiceHeader
+    Write-EventLogHeader
 
     $foreground = $global:PoshColor.EventLog.Default.Color    
 

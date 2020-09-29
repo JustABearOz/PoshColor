@@ -1,4 +1,4 @@
-function Write-Header
+function Write-DriveInfoHeader
 {
     if (($script:currentDirectory -eq ""))
     {
@@ -14,7 +14,7 @@ function Write-PSDrive
 {
     param ([Parameter(Mandatory=$True,Position=1)] $item)
 
-    Write-Header
+    Write-DriveInfoHeader
 
     $foreground = $global:PoshColor.PSDriveInfo.Default.Color
 

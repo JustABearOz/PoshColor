@@ -12,7 +12,7 @@
 RootModule = 'PoshColor.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.0.1.0'
+ModuleVersion = '1.0.2.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -123,7 +123,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = '* Fixes an issue with headings rendering for the wrong items.'
 
     } # End of PSData hashtable
 
