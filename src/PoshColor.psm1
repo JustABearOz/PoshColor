@@ -164,6 +164,7 @@ $originalCommand = New-CommandWrapper Out-Default -Process {
 
         if (($_ -is [System.IO.DirectoryInfo]) -or ($_ -is [System.IO.FileInfo])) {
             $handled = Write-File $_
+            $handled = $true
         }
         elseif ($_ -is [Microsoft.Powershell.Commands.MatchInfo]) {
             $handled = Write-Match $_
@@ -189,7 +190,7 @@ $originalCommand = New-CommandWrapper Out-Default -Process {
         }
 
         ## Platform specific, Win32, not available in all version of powershell
-        if ([System.Environment]::OSVersion.Platform -eq 'Win32NT') {
+        elseif ([System.Environment]::OSVersion.Platform -eq 'Win32NT') {
             try {
 
                 if ($_ -is [System.Diagnostics.Eventing.Reader.EventLogRecord]) {
@@ -209,7 +210,7 @@ $originalCommand = New-CommandWrapper Out-Default -Process {
         $handled = $false
     }
 
-    if ($handled) {
+    if ($handled -eq $true) {
         $_ = $null
     }
 } -end {
