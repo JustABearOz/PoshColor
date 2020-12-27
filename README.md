@@ -73,6 +73,11 @@ The above installation methods will load the PoshColor module for your current s
 ```pwsh
 Import-Module PoshColor
 ```
+### Updating PoshColor
+To update PoshColor to the newest version, run the following command in powershell
+```pwsh
+Update-Module PoshColor
+```
 
 ### Unload PoshColor
 To unload PoshColor from your session, run the following command in powershell
